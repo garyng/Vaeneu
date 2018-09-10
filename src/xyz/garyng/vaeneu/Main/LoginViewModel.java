@@ -1,4 +1,4 @@
-package xyz.garyng.vaeneu.Login;
+package xyz.garyng.vaeneu.Main;
 
 import de.saxsys.mvvmfx.ViewModel;
 

@@ -7,8 +7,8 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import xyz.garyng.vaeneu.Main.MainView;
-import xyz.garyng.vaeneu.Main.MainViewModel;
+import xyz.garyng.vaeneu.Main.LoginView;
+import xyz.garyng.vaeneu.Main.LoginViewModel;
 
 public class App extends Application
 {
@@ -17,7 +17,7 @@ public class App extends Application
     public void start(Stage primaryStage) throws Exception
     {
         primaryStage.setTitle("Vaeneu - University Venue Management");
-        ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
+        ViewTuple<LoginView, LoginViewModel> main = FluentViewLoader.fxmlView(LoginView.class).load();
 
         JFXDecorator decorator = new JFXDecorator(primaryStage, main.getView());
 

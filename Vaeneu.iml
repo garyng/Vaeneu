@@ -11,5 +11,6 @@
     <orderEntry type="library" name="Simple Logging Facade for Java:1.7.25" level="project" />
     <orderEntry type="library" name="de.saxsys:mvvmfx-guice:1.7.0" level="project" />
     <orderEntry type="library" name="com.jfoenix:jfoenix:9.0.6" level="project" />
+    <orderEntry type="library" name="de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2" level="project" />
   </component>
 </module>

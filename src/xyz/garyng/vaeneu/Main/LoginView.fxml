@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.GridPane?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="xyz.garyng.vaeneu.Main.LoginView">
+	<top>
+		<JFXToolbar>
+			<leftItems>
+				<JFXRippler maskType="CIRCLE">
+					<StackPane>
+						<padding>
+							<Insets top="10"
+							        bottom="10"
+							        left="5"
+							        right="5">
+							</Insets>
+						</padding>
+						<FontAwesomeIconView glyphName="ARROW_LEFT"
+						                     styleClass="icon-white"/>
+					</StackPane>
+				</JFXRippler>
+			</leftItems>
+			<center>
+				<Label>Main</Label>
+			</center>
+			<rightItems>
+				<StackPane>
+					<padding>
+						<Insets top="10"
+						        bottom="10"
+						        left="5"
+						        right="5">
+						</Insets>
+					</padding>
+					<FontAwesomeIconView glyphName="USER_CIRCLE"
+					                     styleClass="icon-white"/>
+				</StackPane>
+			</rightItems>
+		</JFXToolbar>
+	</top>
+	<center>
+		<VBox alignment="CENTER">
+			<Label text="Login"
+			       styleClass="display4">
+				<padding>
+					<Insets top="16"
+					        bottom="16"
+					        right="16"
+					        left="16"/>
+				</padding>
+			</Label>
+			<Label text="Username: ">
+				<padding>
+					<Insets top="16"
+					        bottom="4"
+					        right="16"
+					        left="16"/>
+				</padding>
+			</Label>
+			<JFXTextField>
+				<VBox.margin>
+					<Insets top="8"
+					        bottom="8"
+					        right="8"
+					        left="8"/>
+				</VBox.margin>
+			</JFXTextField>
+			<Label text="Password:">
+				<padding>
+					<Insets top="16"
+					        bottom="4"
+					        right="16"
+					        left="16"/>
+				</padding>
+			</Label>
+			<JFXPasswordField>
+				<VBox.margin>
+					<Insets top="8"
+					        bottom="16"
+					        right="8"
+					        left="8"/>
+				</VBox.margin>
+			</JFXPasswordField>
+			<JFXButton text="Login"
+			           styleClass="teal-500"
+			           minWidth="100">
+				<VBox.margin>
+					<Insets top="4"
+					        bottom="16"/>
+				</VBox.margin>
+			</JFXButton>
+		</VBox>
+	</center>
+</BorderPane>

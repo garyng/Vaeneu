@@ -1,4 +1,4 @@
-package xyz.garyng.vaeneu.Login;
+package xyz.garyng.vaeneu.Main;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -16,6 +16,5 @@ public class LoginView implements FxmlView<LoginViewModel>, Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
     }
 }
