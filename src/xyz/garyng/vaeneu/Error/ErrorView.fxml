@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="xyz.garyng.vaeneu.Error.ErrorView">
+	<Label style="-fx-background-color: #f44336; -fx-text-fill: rgba(255, 255, 255, 0.87); -fx-font-family: Roboto Light; -fx-font-size: 112.0;"
+	       text="Oh, snap..."
+	       maxWidth="Infinity">
+		<padding>
+			<Insets top="16"
+			        bottom="16"
+			        right="16"
+			        left="16"/>
+		</padding>
+	</Label>
+	<TextArea fx:id="taMessage"
+	          VBox.vgrow="ALWAYS"
+	          editable="false"
+	          wrapText="true"/>
+</VBox>
