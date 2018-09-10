@@ -3,6 +3,7 @@ package xyz.garyng.vaeneu;
 import com.jfoenix.controls.JFXDecorator;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
+import de.saxsys.mvvmfx.guice.MvvmfxGuiceApplication;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -10,11 +11,15 @@ import javafx.stage.Stage;
 import xyz.garyng.vaeneu.Main.LoginView;
 import xyz.garyng.vaeneu.Main.LoginViewModel;
 
-public class App extends Application
+public class App extends MvvmfxGuiceApplication
 {
+    public static void main(String[] args)
+    {
+        Application.launch(args);
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void startMvvmfx(Stage primaryStage) throws Exception
     {
         primaryStage.setTitle("Vaeneu - University Venue Management");
         ViewTuple<LoginView, LoginViewModel> main = FluentViewLoader.fxmlView(LoginView.class).load();
@@ -30,10 +35,5 @@ public class App extends Application
 
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    public static void main(String[] args)
-    {
-        Application.launch(args);
     }
 }
