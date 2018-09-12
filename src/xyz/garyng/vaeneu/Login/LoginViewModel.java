@@ -1,6 +1,9 @@
 package xyz.garyng.vaeneu.Login;
 
-import com.google.inject.Inject;
+import com.google.inject.*;
+import com.google.inject.Module;
+import com.google.inject.spi.TypeConverterBinding;
+import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
@@ -10,8 +13,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.NavigationService;
+import xyz.garyng.vaeneu.Query.QueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
+
+import java.lang.annotation.Annotation;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class LoginViewModel extends ViewModelBase
 {
@@ -32,7 +41,6 @@ public class LoginViewModel extends ViewModelBase
     {
         _usernameProperty.set(value);
     }
-
 
     // _passwordProperty
     private final StringProperty _passwordProperty = new SimpleStringProperty(this, "Password");
@@ -77,14 +85,10 @@ public class LoginViewModel extends ViewModelBase
         return _loginCommand;
     }
 
-
-    private final AuthenticationService _auth;
-
     @Inject
-    public LoginViewModel(NavigationService navigation, AuthenticationService auth)
+    public LoginViewModel(NavigationService navigation, AuthenticationService authentication)
     {
-        super(navigation);
-        _auth = auth;
+        super(navigation, authentication);
         _loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
     }
 
@@ -95,7 +99,7 @@ public class LoginViewModel extends ViewModelBase
             @Override
             protected void action() throws Exception
             {
-                boolean isAuthenticated = _auth.Authenticate(getUsername(), getPassword());
+                boolean isAuthenticated = _authentication.Authenticate(getUsername(), getPassword());
                 setLoginError(!isAuthenticated);
                 if (isAuthenticated)
                 {

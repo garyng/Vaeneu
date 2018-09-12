@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="xyz.garyng.vaeneu.Dashboard.DashboardView"
+            prefHeight="400.0" prefWidth="600.0">
+	<top>
+		<JFXToolbar>
+			<leftItems>
+				<JFXRippler maskType="CIRCLE"
+				            fx:id="btnGoBack">
+					<StackPane>
+						<padding>
+							<Insets top="10"
+							        bottom="10"
+							        left="5"
+							        right="5">
+							</Insets>
+						</padding>
+						<FontAwesomeIconView glyphName="ARROW_LEFT"
+						                     styleClass="icon-white"/>
+					</StackPane>
+				</JFXRippler>
+			</leftItems>
+			<center>
+				<Label>Main</Label>
+			</center>
+			<rightItems>
+				<JFXRippler maskType="CIRCLE"
+				            fx:id="btnUser">
+					<StackPane>
+						<padding>
+							<Insets top="10"
+							        bottom="10"
+							        left="5"
+							        right="5">
+							</Insets>
+						</padding>
+						<FontAwesomeIconView glyphName="USER_CIRCLE"
+						                     styleClass="icon-white"/>
+					</StackPane>
+
+				</JFXRippler>
+			</rightItems>
+		</JFXToolbar>
+	</top>
+
+</BorderPane>

@@ -84,4 +84,10 @@ public class NavigationService
         _currentViewTuple = _history.pop();
         _logger.debug("Navigated back to {}.", _currentViewTuple.getViewModel().getClass().getName());
     }
+
+    public Boolean CanGoBack()
+    {
+        return !_history.empty();
+    }
+
 }

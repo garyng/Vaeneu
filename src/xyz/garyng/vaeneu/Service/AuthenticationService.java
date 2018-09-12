@@ -6,12 +6,13 @@ import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Query.GetUserByUsername;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public class AuthenticationService implements IAuthenticationService
 {
     private IQueryDispatcher _queryDispatcher;
-    private Optional<User> _currentUser;
+    private Optional<User> _currentUser = Optional.empty();
 
     @Inject
     public AuthenticationService(IQueryDispatcher queryDispatcher)

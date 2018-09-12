@@ -17,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.impl.SimpleLogger;
+import xyz.garyng.vaeneu.Dashboard.DashboardView;
+import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Module.NavigationModule;
@@ -69,10 +71,12 @@ public class App extends MvvmfxGuiceApplication
             // automate ui
             vm.setUsername("admin");
             vm.setPassword("admin");
-        });
+            vm.getLoginCommand().execute();
+        }, false);
+
+        _navigation.GoTo(DashboardViewModel.class, vm -> {}, false);
 
         primaryStage.show();
-
     }
 
     @Override
