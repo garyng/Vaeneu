@@ -36,10 +36,10 @@ public abstract class JsonStorage<T> implements IStorage<T>
             {
                 Gson gson = new Gson();
                 _data = gson.fromJson(reader, getType());
-                _logger.info("Loaded data from \"" + GetFilename() + "\"");
+                _logger.info("Loaded data from \"{}\"", GetFilename());
             } catch (IOException io)
             {
-                _logger.error("Error occurred while loading data from disk, default data is used.", io);
+                _logger.error("Error occurred while loading data from disk, default data is used", io);
                 Reset();
             }
 
@@ -58,7 +58,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
             Files.createDirectories(dataFilePath.getParent());
         } catch (IOException io)
         {
-            _logger.error("Error occurred while creating data directory.", io);
+            _logger.error("Error occurred while creating data directory", io);
         }
         try (Writer writer = Files.newBufferedWriter(dataFilePath, StandardCharsets.UTF_8))
         {
@@ -66,7 +66,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
             gson.toJson(_data, getType(), writer);
         } catch (IOException io)
         {
-            _logger.error("Error occurred while serializing json, data is not persisted.", io);
+            _logger.error("Error occurred while serializing json, data is not persisted", io);
         }
         _logger.debug("Saved \"{}\" ({} items)", GetFilename(), _data.size());
     }
@@ -77,7 +77,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
     public void Reset()
     {
         _data = GetDefaultData();
-        _logger.info("In-memory data of \"{}\" is reset to default.", GetFilename());
+        _logger.info("In-memory data of \"{}\" is reset to default", GetFilename());
         Save();
     }
 
@@ -87,7 +87,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
     public void Clear()
     {
         _data.clear();
-        _logger.info("In-memory data of \"{}\" is cleared.", GetFilename());
+        _logger.info("In-memory data of \"{}\" is cleared", GetFilename());
         // todo: save?
     }
 

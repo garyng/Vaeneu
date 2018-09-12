@@ -1,7 +1,6 @@
 package xyz.garyng.vaeneu.Login;
 
 import com.google.inject.Inject;
-import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
@@ -9,11 +8,12 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import xyz.garyng.vaeneu.Model.User;
+import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
+import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
-import xyz.garyng.vaeneu.Storage.IStorage;
+import xyz.garyng.vaeneu.ViewModelBase;
 
-public class LoginViewModel implements ViewModel
+public class LoginViewModel extends ViewModelBase
 {
     // _usernameProperty
     private final StringProperty _usernameProperty = new SimpleStringProperty(this, "Username");
@@ -77,11 +77,13 @@ public class LoginViewModel implements ViewModel
         return _loginCommand;
     }
 
+
     private final AuthenticationService _auth;
 
     @Inject
-    public LoginViewModel(AuthenticationService auth)
+    public LoginViewModel(NavigationService navigation, AuthenticationService auth)
     {
+        super(navigation);
         _auth = auth;
         _loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
     }
@@ -95,6 +97,10 @@ public class LoginViewModel implements ViewModel
             {
                 boolean isAuthenticated = _auth.Authenticate(getUsername(), getPassword());
                 setLoginError(!isAuthenticated);
+                if (isAuthenticated)
+                {
+                    _navigation.GoTo(DashboardViewModel.class);
+                }
             }
         };
     }

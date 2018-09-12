@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToolbar?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -10,37 +12,9 @@
             fx:controller="xyz.garyng.vaeneu.Login.LoginView">
 	<top>
 		<JFXToolbar>
-			<leftItems>
-				<JFXRippler maskType="CIRCLE">
-					<StackPane>
-						<padding>
-							<Insets top="10"
-							        bottom="10"
-							        left="5"
-							        right="5">
-							</Insets>
-						</padding>
-						<FontAwesomeIconView glyphName="ARROW_LEFT"
-						                     styleClass="icon-white"/>
-					</StackPane>
-				</JFXRippler>
-			</leftItems>
 			<center>
 				<Label>Main</Label>
 			</center>
-			<rightItems>
-				<StackPane>
-					<padding>
-						<Insets top="10"
-						        bottom="10"
-						        left="5"
-						        right="5">
-						</Insets>
-					</padding>
-					<FontAwesomeIconView glyphName="USER_CIRCLE"
-					                     styleClass="icon-white"/>
-				</StackPane>
-			</rightItems>
 		</JFXToolbar>
 	</top>
 	<center>
@@ -87,7 +61,7 @@
 				</VBox.margin>
 			</JFXPasswordField>
 			<Label fx:id="lblLoginError"
-					text="Incorrect username/password combination!"
+			       text="Incorrect username/password combination!"
 			       styleClass="red-500">
 				<padding>
 					<Insets top="4"
