@@ -33,10 +33,10 @@ public class App extends MvvmfxGuiceApplication
 {
     // todo: is this needed?
     @InjectLogger
-    Logger _logger;
+    private Logger _logger;
 
     @Inject
-    IStorage<User> _userStorage;
+    private IStorage<User> _userStorage;
 
     public static void main(String[] args)
     {
@@ -45,7 +45,7 @@ public class App extends MvvmfxGuiceApplication
     }
 
     @Override
-    public void startMvvmfx(Stage primaryStage) throws Exception
+    public void startMvvmfx(Stage primaryStage)
     {
         _userStorage.Load();
 
