@@ -78,9 +78,9 @@ public class App extends MvvmfxGuiceApplication
 
         Scene scene = new Scene(decorator, 600, 600);
         ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(App.class.getResource("css/jfoenix-fonts.css").toExternalForm(),
-                App.class.getResource("css/jfoenix-design.css").toExternalForm(),
-                App.class.getResource("css/jfoenix-custom.css").toExternalForm());
+        stylesheets.addAll(App.class.getResource("resource/css/jfoenix-fonts.css").toExternalForm(),
+                App.class.getResource("resource/css/jfoenix-design.css").toExternalForm(),
+                App.class.getResource("resource/css/jfoenix-custom.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
