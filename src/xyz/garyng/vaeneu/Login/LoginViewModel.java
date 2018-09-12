@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import xyz.garyng.vaeneu.Model.User;
+import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.Storage.IStorage;
 
 public class LoginViewModel implements ViewModel
@@ -76,17 +77,25 @@ public class LoginViewModel implements ViewModel
         return _loginCommand;
     }
 
+    private final AuthenticationService _auth;
+
     @Inject
-    public LoginViewModel(IStorage<User> storage)
+    public LoginViewModel(AuthenticationService auth)
     {
-        _loginCommand = new DelegateCommand(() -> new Action()
+        _auth = auth;
+        _loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
+    }
+
+    private Action onLogin()
+    {
+        return new Action()
         {
             @Override
             protected void action() throws Exception
             {
-                System.out.println("Username: " + getUsername());
-                System.out.println("Password: " + getPassword());
+                boolean isAuthenticated = _auth.Authenticate(getUsername(), getPassword());
+                setLoginError(!isAuthenticated);
             }
-        }, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
+        };
     }
 }

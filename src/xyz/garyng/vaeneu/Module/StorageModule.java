@@ -1,6 +1,7 @@
 package xyz.garyng.vaeneu.Module;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Storage.IStorage;
@@ -13,6 +14,6 @@ public class StorageModule extends AbstractModule
     {
         bind(new TypeLiteral<IStorage<User>>()
         {
-        }).to(UserStorage.class);
+        }).to(UserStorage.class).in(Singleton.class);
     }
 }

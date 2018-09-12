@@ -11,8 +11,8 @@ public class QueryModule extends AbstractModule
     protected void configure()
     {
         bind(IQueryDispatcher.class).to(QueryDispatcher.class);
-        bind(new TypeLiteral<IQueryHandler<GetUserById, User>>()
+        bind(new TypeLiteral<IQueryHandler<GetUserByUsername, User>>()
         {
-        }).to(GetUserByIdQueryHandler.class);
+        }).to(GetUserByUsernameQueryHandler.class);
     }
 }

@@ -36,6 +36,5 @@ public class LoginView implements FxmlView<LoginViewModel>, Initializable
     public void onLoginClicked(ActionEvent actionEvent)
     {
         _viewModel.getLoginCommand().execute();
-        throw new RuntimeException();
     }
 }

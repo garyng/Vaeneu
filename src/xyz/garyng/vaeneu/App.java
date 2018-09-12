@@ -1,6 +1,5 @@
 package xyz.garyng.vaeneu;
 
-import com.google.inject.Inject;
 import com.google.inject.Module;
 import com.jfoenix.controls.JFXDecorator;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -18,11 +17,9 @@ import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
-import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Module.QueryModule;
+import xyz.garyng.vaeneu.Module.ServiceModule;
 import xyz.garyng.vaeneu.Module.StorageModule;
-import xyz.garyng.vaeneu.Query.IQueryDispatcher;
-import xyz.garyng.vaeneu.Storage.IStorage;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -33,13 +30,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class App extends MvvmfxGuiceApplication
 {
-    @Inject
-    private IStorage<User> _userStorage;
-
-
-    @Inject
-    private IQueryDispatcher _queryDispatcher;
-
     public static void main(String[] args)
     {
         System.setProperty(SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
@@ -49,8 +39,6 @@ public class App extends MvvmfxGuiceApplication
     @Override
     public void startMvvmfx(Stage primaryStage)
     {
-        _userStorage.Load();
-
 
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) ->
         {
@@ -70,7 +58,7 @@ public class App extends MvvmfxGuiceApplication
                 Platform.exit();
             } catch (IOException e)
             {
-                _logger.error("Error occurred while showing error", e);
+                _logger.error("Errors occurred while showing error", e);
             }
         });
 
@@ -85,6 +73,12 @@ public class App extends MvvmfxGuiceApplication
                 App.class.getResource("resource/css/jfoenix-design.css").toExternalForm(),
                 App.class.getResource("resource/css/jfoenix-custom.css").toExternalForm());
 
+        // automate ui
+        main.getViewModel().setUsername("admin");
+        main.getViewModel().setPassword("admin");
+        main.getViewModel().getLoginCommand().execute();
+
+
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -95,5 +89,6 @@ public class App extends MvvmfxGuiceApplication
     {
         modules.add(new StorageModule());
         modules.add(new QueryModule());
+        modules.add(new ServiceModule());
     }
 }
