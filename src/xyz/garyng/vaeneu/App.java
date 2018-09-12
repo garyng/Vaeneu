@@ -13,12 +13,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Model.User;
+import xyz.garyng.vaeneu.Module.QueryModule;
 import xyz.garyng.vaeneu.Module.StorageModule;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Storage.IStorage;
 
 import java.io.IOException;
@@ -26,12 +29,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Slf4j
 public class App extends MvvmfxGuiceApplication
 {
-    // todo: is this needed?
-
     @Inject
     private IStorage<User> _userStorage;
+
+
+    @Inject
+    private IQueryDispatcher _queryDispatcher;
 
     public static void main(String[] args)
     {
@@ -43,6 +50,7 @@ public class App extends MvvmfxGuiceApplication
     public void startMvvmfx(Stage primaryStage)
     {
         _userStorage.Load();
+
 
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) ->
         {
@@ -79,11 +87,13 @@ public class App extends MvvmfxGuiceApplication
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     @Override
     public void initGuiceModules(List<Module> modules) throws Exception
     {
         modules.add(new StorageModule());
+        modules.add(new QueryModule());
     }
 }
