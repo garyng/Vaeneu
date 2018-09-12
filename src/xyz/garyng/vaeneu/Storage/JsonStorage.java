@@ -2,10 +2,7 @@ package xyz.garyng.vaeneu.Storage;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.slf4j.ILoggerFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import xyz.garyng.vaeneu.Logger.InjectLogger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,13 +15,6 @@ import java.util.List;
 
 public abstract class JsonStorage<T> implements IStorage<T>
 {
-    private final Logger _logger;
-
-    protected JsonStorage(Logger logger)
-    {
-        _logger = logger;
-    }
-
     private List<T> _data;
 
     private Path ResolvePath()

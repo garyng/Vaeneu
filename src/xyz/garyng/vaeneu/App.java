@@ -13,14 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
 import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Error.ErrorView;
-import xyz.garyng.vaeneu.Logger.InjectLogger;
 import xyz.garyng.vaeneu.Login.LoginView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Model.User;
-import xyz.garyng.vaeneu.Module.LoggerModule;
 import xyz.garyng.vaeneu.Module.StorageModule;
 import xyz.garyng.vaeneu.Storage.IStorage;
 
@@ -32,8 +29,6 @@ import java.util.stream.Collectors;
 public class App extends MvvmfxGuiceApplication
 {
     // todo: is this needed?
-    @InjectLogger
-    private Logger _logger;
 
     @Inject
     private IStorage<User> _userStorage;
@@ -89,7 +84,6 @@ public class App extends MvvmfxGuiceApplication
     @Override
     public void initGuiceModules(List<Module> modules) throws Exception
     {
-        modules.add(new LoggerModule());
         modules.add(new StorageModule());
     }
 }

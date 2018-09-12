@@ -1,7 +1,5 @@
 package xyz.garyng.vaeneu.Storage;
 
-import com.google.inject.Inject;
-import org.slf4j.ILoggerFactory;
 import xyz.garyng.vaeneu.Model.User;
 
 import java.util.ArrayList;
@@ -9,12 +7,6 @@ import java.util.List;
 
 public class UserStorage extends JsonStorage<User>
 {
-    @Inject
-    public UserStorage(ILoggerFactory logger)
-    {
-        super(logger.getLogger(UserStorage.class.getName()));
-    }
-
     @Override
     String GetFilename()
     {
