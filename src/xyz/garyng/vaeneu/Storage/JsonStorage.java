@@ -94,6 +94,10 @@ public abstract class JsonStorage<T> implements IStorage<T>
     @Override
     public List<T> Data()
     {
+        if (_data == null)
+        {
+            Load();
+        }
         return _data;
     }
 }
