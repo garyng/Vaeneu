@@ -1,13 +1,13 @@
 package xyz.garyng.vaeneu.Storage;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,9 +35,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
             try (Reader reader = Files.newBufferedReader(dataFilePath, StandardCharsets.UTF_8))
             {
                 Gson gson = new Gson();
-                _data = gson.fromJson(reader, new TypeToken<List<T>>()
-                {
-                }.getType());
+                _data = gson.fromJson(reader, getType());
                 _logger.info("Loaded data from \"" + GetFilename() + "\"");
             } catch (IOException io)
             {
@@ -48,7 +46,6 @@ public abstract class JsonStorage<T> implements IStorage<T>
         } else
         {
             Reset();
-            Save();
         }
     }
 
@@ -66,15 +63,15 @@ public abstract class JsonStorage<T> implements IStorage<T>
         try (Writer writer = Files.newBufferedWriter(dataFilePath, StandardCharsets.UTF_8))
         {
             Gson gson = new Gson();
-            gson.toJson(_data, new TypeToken<List<T>>()
-            {
-            }.getType(), writer);
+            gson.toJson(_data, getType(), writer);
         } catch (IOException io)
         {
             _logger.error("Error occurred while serializing json, data is not persisted.", io);
         }
         _logger.debug("Saved \"{}\" ({} items)", GetFilename(), _data.size());
     }
+
+    abstract Type getType();
 
     @Override
     public void Reset()

@@ -1,7 +1,10 @@
 package xyz.garyng.vaeneu.Storage;
 
+import com.google.inject.TypeLiteral;
+import org.apache.commons.codec.digest.DigestUtils;
 import xyz.garyng.vaeneu.Model.User;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +14,14 @@ public class UserStorage extends JsonStorage<User>
     String GetFilename()
     {
         return UserStorage.class.getName();
+    }
+
+    @Override
+    Type getType()
+    {
+        return new TypeLiteral<ArrayList<User>>()
+        {
+        }.getType();
     }
 
     @Override
