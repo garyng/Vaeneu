@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+@Slf4j
 public abstract class JsonStorage<T> implements IStorage<T>
 {
     private List<T> _data;
@@ -37,6 +38,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
                 _data = gson.fromJson(reader, new TypeToken<List<T>>()
                 {
                 }.getType());
+                _logger.info("Loaded data from \"" + GetFilename() + "\"");
             } catch (IOException io)
             {
                 _logger.error("Error occurred while loading data from disk, default data is used.", io);

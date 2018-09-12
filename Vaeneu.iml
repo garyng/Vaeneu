@@ -12,7 +12,7 @@
     <orderEntry type="library" name="de.saxsys:mvvmfx-guice:1.7.0" level="project" />
     <orderEntry type="library" name="com.jfoenix:jfoenix:9.0.6" level="project" />
     <orderEntry type="library" name="de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2" level="project" />
-    <orderEntry type="library" name="org.projectlombok:lombok:1.16.4" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" name="org.projectlombok:lombok:1.18.2" level="project" />
   </component>
 </module>

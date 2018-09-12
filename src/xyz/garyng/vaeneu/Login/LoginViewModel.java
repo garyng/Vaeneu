@@ -12,9 +12,6 @@ import javafx.beans.property.StringProperty;
 import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Storage.IStorage;
 
-import javax.swing.*;
-import java.util.Random;
-
 public class LoginViewModel implements ViewModel
 {
     // _usernameProperty
