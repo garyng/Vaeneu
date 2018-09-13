@@ -6,8 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@Builder
 public class Venue
 {
     private int id;

@@ -1,0 +1,37 @@
+package xyz.garyng.vaeneu.Venue;
+
+import com.jfoenix.controls.JFXRippler;
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
+import javafx.beans.binding.Bindings;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import org.fxmisc.easybind.EasyBind;
+import xyz.garyng.vaeneu.Model.Venue;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initializable
+{
+
+    public Label lblVenueName;
+    public JFXRippler btnGoBack;
+    @InjectViewModel
+    private VenueDetailsViewModel _viewModel;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
+        lblVenueName.textProperty().bind(EasyBind.map(_viewModel.VenueProperty(), Venue::name));
+
+        // todo: bind goback
+    }
+
+    public void onGoBackButtonClicked(MouseEvent mouseEvent)
+    {
+        _viewModel.getGoBackCommand().execute();
+    }
+}

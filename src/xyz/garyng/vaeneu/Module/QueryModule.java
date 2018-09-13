@@ -3,7 +3,10 @@ package xyz.garyng.vaeneu.Module;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import xyz.garyng.vaeneu.Model.User;
+import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.Query.*;
+
+import java.util.List;
 
 public class QueryModule extends AbstractModule
 {
@@ -11,8 +14,16 @@ public class QueryModule extends AbstractModule
     protected void configure()
     {
         bind(IQueryDispatcher.class).to(QueryDispatcher.class);
+
         bind(new TypeLiteral<IQueryHandler<GetUserByUsername, User>>()
         {
         }).to(GetUserByUsernameQueryHandler.class);
+
+        bind(new TypeLiteral<IQueryHandler<GetAllVenue, List<Venue>>>()
+        {
+        }).to(GetAllVenueQueryHandler.class);
+        bind(new TypeLiteral<IQueryHandler<GetVenueById, Venue>>()
+        {
+        }).to(GetVenueByIdQueryHandler.class);
     }
 }

@@ -1,16 +1,13 @@
-package xyz.garyng.vaeneu.Model;
+package xyz.garyng.vaeneu.Query;
+
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@Builder
-public class User
+public class GetVenueById implements IQuery
 {
     private int id;
-    private String userName;
-    private String hashedPassword;
 }

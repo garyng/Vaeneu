@@ -6,6 +6,7 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import org.fxmisc.easybind.EasyBind;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,12 +24,12 @@ public class VenueListItemView implements FxmlView<VenueListItemViewModel>, Init
     public void initialize(URL location, ResourceBundle resources)
     {
         lblName.textProperty().bind(_viewModel.NameProperty());
-        lblCapacity.textProperty().bind(Bindings.createStringBinding(() -> String.format("Capacity: %d",
-                _viewModel.CapacityProperty().get()), _viewModel.CapacityProperty()));
+        lblCapacity.textProperty().bind(EasyBind.map(_viewModel.CapacityProperty(),
+                capacity -> String.format("Capacity: %d", capacity.intValue())));
     }
 
     public void onClicked(MouseEvent mouseEvent)
     {
-        // goto details
+        _viewModel.getGoToVenueDetailsCommand().execute();
     }
 }

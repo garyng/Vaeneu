@@ -3,12 +3,17 @@ package xyz.garyng.vaeneu.Venue;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
+import de.saxsys.mvvmfx.utils.commands.Action;
+import de.saxsys.mvvmfx.utils.commands.Command;
+import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
 
@@ -68,14 +73,31 @@ public class VenueListItemViewModel extends ViewModelBase
         CapacityProperty.set(value);
     }
 
-    // private final Command GoToVenueDetailsCommand;
+    public Command getGoToVenueDetailsCommand()
+    {
+        return GoToVenueDetailsCommand;
+    }
+
+    private final Command GoToVenueDetailsCommand;
 
     @Inject
-    public VenueListItemViewModel(NavigationService navigation, AuthenticationService authentication, @Assisted Venue venue)
+    public VenueListItemViewModel(NavigationService navigation, AuthenticationService authentication,
+                                  IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher,
+                                  @Assisted Venue venue)
     {
-        super(navigation, authentication);
+        super(navigation, authentication, queryDispatcher, commandDispatcher);
         setName(venue.name());
         setDescription(venue.description());
         setCapacity(venue.capacity());
+
+        GoToVenueDetailsCommand = new DelegateCommand(() -> new Action()
+        {
+            @Override
+            protected void action()
+            {
+                _navigation.GoTo(VenueDetailsViewModel.class, vm ->
+                        vm.setVenueId(venue.id()));
+            }
+        });
     }
 }

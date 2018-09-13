@@ -106,7 +106,8 @@ public class NavigationService
 
     private void UpdateView()
     {
-        Platform.runLater(() -> _rootViewModel.setContent(_currentViewTuple.getView()));
+        // Platform.runLater(() -> _rootViewModel.setContent(_currentViewTuple.getView()));
+        _rootViewModel.setContent(_currentViewTuple.getView());
     }
 
     public void Clear()
