@@ -11,8 +11,10 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.NavigationService;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Query.QueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
@@ -86,9 +88,9 @@ public class LoginViewModel extends ViewModelBase
     }
 
     @Inject
-    public LoginViewModel(NavigationService navigation, AuthenticationService authentication)
+    public LoginViewModel(NavigationService navigation, AuthenticationService authentication, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
-        super(navigation, authentication);
+        super(navigation, authentication, queryDispatcher, commandDispatcher);
         _loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
     }
 

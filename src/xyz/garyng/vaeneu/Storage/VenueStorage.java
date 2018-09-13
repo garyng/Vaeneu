@@ -1,6 +1,6 @@
 package xyz.garyng.vaeneu.Storage;
 
-import Fakes.Fakes;
+import xyz.garyng.vaeneu.Fakes.Fakes;
 import com.google.inject.TypeLiteral;
 import xyz.garyng.vaeneu.Model.Venue;
 

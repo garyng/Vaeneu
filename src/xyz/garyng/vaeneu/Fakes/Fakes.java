@@ -1,4 +1,4 @@
-package Fakes;
+package xyz.garyng.vaeneu.Fakes;
 
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.mutable.MutableInt;

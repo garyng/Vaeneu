@@ -83,11 +83,11 @@ public class App extends MvvmfxGuiceApplication
     {
         modules.add(new StorageModule());
         modules.add(new QueryModule());
+        modules.add(new CommandModule());
         modules.add(new ServiceModule());
         modules.add(new NavigationModule());
         modules.add(new ViewModelsFactoryModule());
     }
-
 
 
     private void onUncaughtException(Thread thread, Throwable throwable)

@@ -8,13 +8,17 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Model.User;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 
 public class ViewModelBase implements ViewModel
 {
     protected final NavigationService _navigation;
     protected final AuthenticationService _authentication;
+    protected final IQueryDispatcher _queryDispatcher;
+    protected final ICommandDispatcher _commandDispatcher;
 
     // CanGoBackProperty
     protected final BooleanProperty CanGoBackProperty = new SimpleBooleanProperty(this, "CanGoBack");
@@ -80,10 +84,13 @@ public class ViewModelBase implements ViewModel
         return GoBackCommand;
     }
 
-    public ViewModelBase(NavigationService navigation, AuthenticationService authentication)
+    public ViewModelBase(NavigationService navigation, AuthenticationService authentication,
+                         IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
         _navigation = navigation;
         _authentication = authentication;
+        _queryDispatcher = queryDispatcher;
+        _commandDispatcher = commandDispatcher;
         CanGoBackProperty.bind(_navigation.CanGoBackProperty());
         setIsAuthenticated(_authentication.IsAuthenticated());
         _authentication.CurrentUser().ifPresent(this::setCurrentUser);

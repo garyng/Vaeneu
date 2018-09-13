@@ -5,19 +5,24 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Factory.ViewModelsFactory;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
+import xyz.garyng.vaeneu.Query.GetAllVenue;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
-import xyz.garyng.vaeneu.Storage.IStorage;
 import xyz.garyng.vaeneu.ViewModelBase;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class VenueListViewModel extends ViewModelBase
 {
     // SelectedVenueProperty
     private final ObjectProperty<VenueListItemViewModel> SelectedVenueProperty = new SimpleObjectProperty<>(this, "SelectedVenue");
+
 
     public final ObjectProperty<VenueListItemViewModel> SelectedVenueProperty()
     {
@@ -41,20 +46,21 @@ public class VenueListViewModel extends ViewModelBase
         return VenuesProperty;
     }
 
-    private final IStorage<Venue> _storage;
     private final ViewModelsFactory _factory;
 
     @Inject
     public VenueListViewModel(NavigationService navigation, AuthenticationService authentication,
-                              IStorage<Venue> storage, ViewModelsFactory factory)
+                              IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher,
+                              ViewModelsFactory factory)
     {
-        super(navigation, authentication);
-        _storage = storage;
+        super(navigation, authentication, queryDispatcher, commandDispatcher);
         _factory = factory;
 
-        VenuesProperty.setAll(_storage.Data()
-                .stream()
-                .map(_factory::CreateVenueListItemViewModel)
-                .collect(Collectors.toList()));
+        Optional<List<Venue>> result = _queryDispatcher.DispatchList(Venue.class, new GetAllVenue());
+        result.map(venues ->
+                venues.stream()
+                        .map(_factory::CreateVenueListItemViewModel)
+                        .collect(Collectors.toList()))
+                .ifPresent(VenuesProperty::setAll);
     }
 }

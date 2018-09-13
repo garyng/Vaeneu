@@ -17,5 +17,6 @@
     <orderEntry type="library" name="commons-codec:commons-codec:1.11" level="project" />
     <orderEntry type="library" name="com.github.javafaker:javafaker:0.16" level="project" />
     <orderEntry type="library" name="com.google.inject.extensions:guice-assistedinject:3.0" level="project" />
+    <orderEntry type="library" name="org.fxmisc.easybind:easybind:1.0.4-SNAPSHOT" level="project" />
   </component>
 </module>

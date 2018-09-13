@@ -40,6 +40,6 @@ public class DashboardView implements FxmlView<DashboardViewModel>, Initializabl
 
     public void onVenuesButtonClicked(ActionEvent actionEvent)
     {
-        _viewModel.getGoToVenuesCommand().execute();
+        _viewModel.getGoToVenueListCommand().execute();
     }
 }

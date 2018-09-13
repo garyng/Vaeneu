@@ -4,8 +4,10 @@ import com.google.inject.Inject;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
+import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.NavigationService;
+import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
 
@@ -19,11 +21,10 @@ public class UserPopupViewModel extends ViewModelBase
     }
 
     @Inject
-    public UserPopupViewModel(NavigationService navigation, AuthenticationService authentication)
+    public UserPopupViewModel(NavigationService navigation, AuthenticationService authentication, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
-        super(navigation, authentication);
+        super(navigation, authentication, queryDispatcher, commandDispatcher);
         _logoutCommand = new DelegateCommand(this::onLogout, this.isAuthenticated());
-
     }
 
     private Action onLogout()
