@@ -3,10 +3,13 @@
 <?import com.jfoenix.controls.JFXRippler?>
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="xyz.garyng.vaeneu.Venue.VenueDetailsView"
@@ -25,9 +28,26 @@
 			</left>
 			<center>
 				<StackPane styleClass="padding-16">
-					<Label fx:id="lblVenueName"></Label>
+					<Label fx:id="lblVenueName"/>
 				</StackPane>
 			</center>
 		</JFXToolbar>
 	</top>
+	<center>
+		<ScrollPane fx:id="scrollPane"
+		            fitToWidth="true"
+		            fitToHeight="true"
+		            hbarPolicy="NEVER"
+		            vbarPolicy="ALWAYS">
+			<VBox>
+				<Label fx:id="lblCapacity"
+				       styleClass="subhead, padding-8"/>
+				<Label fx:id="lblDescription"
+				       styleClass="body1, padding-8"
+				       wrapText="true"/>
+			</VBox>
+
+		</ScrollPane>
+	</center>
+	<!--todo: check availability-->
 </BorderPane>
