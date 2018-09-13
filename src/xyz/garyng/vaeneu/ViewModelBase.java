@@ -1,6 +1,9 @@
 package xyz.garyng.vaeneu;
 
 import de.saxsys.mvvmfx.ViewModel;
+import de.saxsys.mvvmfx.utils.commands.Action;
+import de.saxsys.mvvmfx.utils.commands.Command;
+import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -70,6 +73,13 @@ public class ViewModelBase implements ViewModel
     }
 
 
+    private final Command GoBackCommand;
+
+    public Command getGoBackCommand()
+    {
+        return GoBackCommand;
+    }
+
     public ViewModelBase(NavigationService navigation, AuthenticationService authentication)
     {
         _navigation = navigation;
@@ -77,5 +87,14 @@ public class ViewModelBase implements ViewModel
         CanGoBackProperty.bind(_navigation.CanGoBackProperty());
         setIsAuthenticated(_authentication.IsAuthenticated());
         _authentication.CurrentUser().ifPresent(this::setCurrentUser);
+        GoBackCommand = new DelegateCommand(() -> new Action()
+        {
+
+            @Override
+            protected void action() throws Exception
+            {
+                _navigation.GoBack();
+            }
+        });
     }
 }
