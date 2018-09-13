@@ -6,12 +6,14 @@ import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import xyz.garyng.vaeneu.Root.IRootViewModel;
 
+import java.lang.management.PlatformManagedObject;
 import java.util.Optional;
 import java.util.Stack;
 import java.util.function.Consumer;
@@ -69,7 +71,7 @@ public class NavigationService
         }
         _currentViewTuple = newViewTuple;
 
-        _rootViewModel.setContent(newViewTuple.getView());
+        Platform.runLater(() -> _rootViewModel.setContent(newViewTuple.getView()));
         _logger.debug("Navigated to {}", targetViewModelType.getName());
     }
 
@@ -83,6 +85,11 @@ public class NavigationService
         }
         _currentViewTuple = _history.pop();
         _logger.debug("Navigated back to {}.", _currentViewTuple.getViewModel().getClass().getName());
+    }
+
+    public void Clear()
+    {
+        _history.clear();
     }
 
     public Boolean CanGoBack()
