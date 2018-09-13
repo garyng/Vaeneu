@@ -115,6 +115,12 @@
 	-fx-cursor: hand;
 }
 
+.icon-grey {
+	-fx-fill: rgba(0, 0, 0, 0.87);
+	-fx-padding: 10.0;
+	-fx-cursor: hand;
+}
+
 .icons-rippler {
 	-jfx-rippler-fill: #FE774D;
 	-jfx-mask-type: CIRCLE;

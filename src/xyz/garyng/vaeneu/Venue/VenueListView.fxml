@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="xyz.garyng.vaeneu.Venue.VenueListView">
+	<top>
+		<JFXToolbar>
+			<leftItems>
+				<JFXRippler maskType="CIRCLE"
+				            fx:id="btnGoBack"
+				            onMouseClicked="#onGoBackButtonClicked">
+					<StackPane>
+						<padding>
+							<Insets top="10"
+							        bottom="10"
+							        left="5"
+							        right="5">
+							</Insets>
+						</padding>
+						<FontAwesomeIconView glyphName="ARROW_LEFT"
+						                     styleClass="icon-white"/>
+					</StackPane>
+				</JFXRippler>
+			</leftItems>
+			<center>
+				<Label>Venues</Label>
+			</center>
+			<rightItems>
+				<JFXRippler maskType="CIRCLE"
+				            fx:id="btnUser"
+				            onMouseClicked="#onUserPopupClicked">
+					<StackPane>
+						<padding>
+							<Insets top="10"
+							        bottom="10"
+							        left="10"
+							        right="10">
+							</Insets>
+						</padding>
+						<FontAwesomeIconView glyphName="USER_CIRCLE"
+						                     styleClass="icon-white"/>
+					</StackPane>
+
+				</JFXRippler>
+			</rightItems>
+		</JFXToolbar>
+	</top>
+	<center>
+		<JFXListView
+				fx:id="lvVenues">
+		</JFXListView>
+	</center>
+</BorderPane>
