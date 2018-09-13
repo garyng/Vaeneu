@@ -86,8 +86,7 @@ public class NavigationService
             OnHistoryChanged();
         }
         _currentViewTuple = newViewTuple;
-
-        Platform.runLater(() -> _rootViewModel.setContent(newViewTuple.getView()));
+        UpdateView();
         _logger.debug("Navigated to {}", targetViewModelType.getName());
     }
 
@@ -101,7 +100,13 @@ public class NavigationService
         }
         _currentViewTuple = _history.pop();
         OnHistoryChanged();
+        UpdateView();
         _logger.debug("Navigated back to {}.", _currentViewTuple.getViewModel().getClass().getName());
+    }
+
+    private void UpdateView()
+    {
+        Platform.runLater(() -> _rootViewModel.setContent(_currentViewTuple.getView()));
     }
 
     public void Clear()
