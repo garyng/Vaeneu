@@ -18,12 +18,15 @@ import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
+import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.Module.NavigationModule;
 import xyz.garyng.vaeneu.Module.QueryModule;
 import xyz.garyng.vaeneu.Module.ServiceModule;
 import xyz.garyng.vaeneu.Module.StorageModule;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;
+import xyz.garyng.vaeneu.Storage.IStorage;
+import xyz.garyng.vaeneu.Storage.VenueStorage;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -36,6 +39,9 @@ public class App extends MvvmfxGuiceApplication
 {
     @Inject
     private NavigationService _navigation;
+
+    @Inject
+    private IStorage<Venue> _venueStorage;
 
     public static void main(String[] args)
     {

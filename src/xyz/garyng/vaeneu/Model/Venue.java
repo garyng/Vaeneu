@@ -8,9 +8,10 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class User
+public class Venue
 {
     private int id;
-    private String userName;
-    private String hashedPassword;
+    private String name;
+    private String description;
+    private int capacity;
 }

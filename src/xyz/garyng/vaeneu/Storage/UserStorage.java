@@ -17,7 +17,7 @@ public class UserStorage extends JsonStorage<User>
     }
 
     @Override
-    Type getType()
+    Type getCollectionType()
     {
         return new TypeLiteral<ArrayList<User>>()
         {

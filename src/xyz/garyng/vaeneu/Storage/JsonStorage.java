@@ -35,7 +35,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
             try (Reader reader = Files.newBufferedReader(dataFilePath, StandardCharsets.UTF_8))
             {
                 Gson gson = new Gson();
-                _data = gson.fromJson(reader, getType());
+                _data = gson.fromJson(reader, getCollectionType());
                 _logger.info("Loaded data from \"{}\"", GetFilename());
             } catch (IOException io)
             {
@@ -63,7 +63,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
         try (Writer writer = Files.newBufferedWriter(dataFilePath, StandardCharsets.UTF_8))
         {
             Gson gson = new Gson();
-            gson.toJson(_data, getType(), writer);
+            gson.toJson(_data, getCollectionType(), writer);
         } catch (IOException io)
         {
             _logger.error("Error occurred while serializing json, data is not persisted", io);
@@ -71,7 +71,7 @@ public abstract class JsonStorage<T> implements IStorage<T>
         _logger.debug("Saved \"{}\" ({} items)", GetFilename(), _data.size());
     }
 
-    abstract Type getType();
+    abstract Type getCollectionType();
 
     @Override
     public void Reset()
