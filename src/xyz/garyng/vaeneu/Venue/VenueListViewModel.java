@@ -5,6 +5,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import xyz.garyng.vaeneu.Factory.ViewModelsFactory;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
@@ -30,7 +31,7 @@ public class VenueListViewModel extends ViewModelBase
 
     public final void setSelectedVenue(Venue value)
     {
-        SelectedVenueProperty.set(new VenueListItemViewModel(value));
+        SelectedVenueProperty.set(_factory.CreateVenueListItemViewModel(value));
     }
 
     private final ObservableList<VenueListItemViewModel> VenuesProperty = FXCollections.observableArrayList();
@@ -41,16 +42,19 @@ public class VenueListViewModel extends ViewModelBase
     }
 
     private final IStorage<Venue> _storage;
+    private final ViewModelsFactory _factory;
 
     @Inject
-    public VenueListViewModel(NavigationService navigation, AuthenticationService authentication, IStorage<Venue> storage)
+    public VenueListViewModel(NavigationService navigation, AuthenticationService authentication,
+                              IStorage<Venue> storage, ViewModelsFactory factory)
     {
         super(navigation, authentication);
         _storage = storage;
+        _factory = factory;
 
-        VenuesProperty.setAll(storage.Data()
+        VenuesProperty.setAll(_storage.Data()
                 .stream()
-                .map(VenueListItemViewModel::new)
+                .map(_factory::CreateVenueListItemViewModel)
                 .collect(Collectors.toList()));
     }
 }

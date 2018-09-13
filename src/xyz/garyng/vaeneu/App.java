@@ -1,5 +1,6 @@
 package xyz.garyng.vaeneu;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Module;
 import com.jfoenix.controls.JFXDecorator;
@@ -19,14 +20,10 @@ import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Model.Venue;
-import xyz.garyng.vaeneu.Module.NavigationModule;
-import xyz.garyng.vaeneu.Module.QueryModule;
-import xyz.garyng.vaeneu.Module.ServiceModule;
-import xyz.garyng.vaeneu.Module.StorageModule;
+import xyz.garyng.vaeneu.Module.*;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;
-import xyz.garyng.vaeneu.Storage.IStorage;
-import xyz.garyng.vaeneu.Storage.VenueStorage;
+import xyz.garyng.vaeneu.Venue.VenueListItemViewModel;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -39,9 +36,6 @@ public class App extends MvvmfxGuiceApplication
 {
     @Inject
     private NavigationService _navigation;
-
-    @Inject
-    private IStorage<Venue> _venueStorage;
 
     public static void main(String[] args)
     {
@@ -77,7 +71,9 @@ public class App extends MvvmfxGuiceApplication
             vm.getLoginCommand().execute();
         }, false);
 
-        _navigation.GoTo(DashboardViewModel.class, vm -> {}, false);
+        _navigation.GoTo(DashboardViewModel.class, vm ->
+        {
+        }, false);
 
         primaryStage.show();
     }
@@ -89,7 +85,10 @@ public class App extends MvvmfxGuiceApplication
         modules.add(new QueryModule());
         modules.add(new ServiceModule());
         modules.add(new NavigationModule());
+        modules.add(new ViewModelsFactoryModule());
     }
+
+
 
     private void onUncaughtException(Thread thread, Throwable throwable)
     {
