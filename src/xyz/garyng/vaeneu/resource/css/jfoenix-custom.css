@@ -1077,4 +1077,27 @@
 	-fx-border-radius: 5;
 }
 
+.padding-4 {
+	-fx-padding: 4px;
+}
+
+.padding-8 {
+	-fx-padding: 8px;
+}
+
+.padding-16 {
+	-fx-padding: 16px;
+}
+
+.padding-24 {
+	-fx-padding: 42px;
+}
+
+.padding-32 {
+	-fx-padding: 32px;
+}
+
+.padding-64 {
+	-fx-padding: 64px;
+}
 

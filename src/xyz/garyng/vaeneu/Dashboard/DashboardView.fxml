@@ -18,24 +18,17 @@
 			<center>
 				<Label>Dashboard</Label>
 			</center>
-			<rightItems>
+			<right>
 				<JFXRippler maskType="CIRCLE"
 				            fx:id="btnUser"
 				            onMouseClicked="#onUserPopupClicked">
-					<StackPane>
-						<padding>
-							<Insets top="10"
-							        bottom="10"
-							        left="10"
-							        right="10">
-							</Insets>
-						</padding>
+					<StackPane styleClass="padding-16">
 						<FontAwesomeIconView glyphName="USER_CIRCLE"
 						                     styleClass="icon-white"/>
 					</StackPane>
 
 				</JFXRippler>
-			</rightItems>
+			</right>
 		</JFXToolbar>
 	</top>
 	<center>

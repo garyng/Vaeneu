@@ -13,44 +13,30 @@
             fx:controller="xyz.garyng.vaeneu.Venue.VenueListView">
 	<top>
 		<JFXToolbar>
-			<leftItems>
+			<left>
 				<JFXRippler maskType="CIRCLE"
 				            fx:id="btnGoBack"
 				            onMouseClicked="#onGoBackButtonClicked">
-					<StackPane>
-						<padding>
-							<Insets top="10"
-							        bottom="10"
-							        left="5"
-							        right="5">
-							</Insets>
-						</padding>
+					<StackPane styleClass="padding-16">
 						<FontAwesomeIconView glyphName="ARROW_LEFT"
 						                     styleClass="icon-white"/>
 					</StackPane>
 				</JFXRippler>
-			</leftItems>
+			</left>
 			<center>
 				<Label>Venues</Label>
 			</center>
-			<rightItems>
+			<right>
 				<JFXRippler maskType="CIRCLE"
 				            fx:id="btnUser"
 				            onMouseClicked="#onUserPopupClicked">
-					<StackPane>
-						<padding>
-							<Insets top="10"
-							        bottom="10"
-							        left="10"
-							        right="10">
-							</Insets>
-						</padding>
+					<StackPane styleClass="padding-16">
 						<FontAwesomeIconView glyphName="USER_CIRCLE"
 						                     styleClass="icon-white"/>
 					</StackPane>
 
 				</JFXRippler>
-			</rightItems>
+			</right>
 		</JFXToolbar>
 	</top>
 	<center>

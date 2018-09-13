@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.GridPane?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="xyz.garyng.vaeneu.Venue.VenueListItemView"
-          onMouseClicked="#onClicked">
-	<padding>
-		<Insets top="16"
-		        bottom="16"
-		        right="16"
-		        left="16"/>
-	</padding>
+          onMouseClicked="#onClicked"
+          styleClass="padding-16">
 	<Label fx:id="lblName"
 	       styleClass="display2"
 	       GridPane.rowIndex="0"/>
