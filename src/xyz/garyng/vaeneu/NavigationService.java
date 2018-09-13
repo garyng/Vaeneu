@@ -7,6 +7,8 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,6 +23,20 @@ import java.util.function.Consumer;
 @Slf4j
 public class NavigationService
 {
+
+    // CanGoBackProperty
+    private final BooleanProperty CanGoBackProperty = new SimpleBooleanProperty(this, "CanGoBack");
+
+    public final BooleanProperty CanGoBackProperty()
+    {
+        return CanGoBackProperty;
+    }
+
+    private void setCanGoBack(boolean value)
+    {
+        CanGoBackProperty.set(value);
+    }
+
     private ViewTuple<? extends FxmlView<? extends ViewModel>, ? extends ViewModel> _currentViewTuple;
     private Stack<ViewTuple<? extends FxmlView<? extends ViewModel>, ? extends ViewModel>> _history = new Stack<>();
 
@@ -35,7 +51,6 @@ public class NavigationService
 
     public void RegisterRoot(IRootViewModel rootViewModel)
     {
-
         _rootViewModel = rootViewModel;
     }
 
@@ -68,6 +83,7 @@ public class NavigationService
         {
             _logger.debug("Pushed {} to history stack", _currentViewTuple.getViewModel().getClass().getName());
             _history.push(_currentViewTuple);
+            OnHistoryChanged();
         }
         _currentViewTuple = newViewTuple;
 
@@ -84,17 +100,19 @@ public class NavigationService
             return;
         }
         _currentViewTuple = _history.pop();
+        OnHistoryChanged();
         _logger.debug("Navigated back to {}.", _currentViewTuple.getViewModel().getClass().getName());
     }
 
     public void Clear()
     {
         _history.clear();
+        OnHistoryChanged();
     }
 
-    public Boolean CanGoBack()
+    private void OnHistoryChanged()
     {
-        return !_history.empty();
+        setCanGoBack(!_history.empty());
     }
 
 }

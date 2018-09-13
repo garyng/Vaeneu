@@ -74,7 +74,7 @@ public class ViewModelBase implements ViewModel
     {
         _navigation = navigation;
         _authentication = authentication;
-        setCanGoBack(_navigation.CanGoBack());
+        CanGoBackProperty.bind(_navigation.CanGoBackProperty());
         setIsAuthenticated(_authentication.IsAuthenticated());
         _authentication.CurrentUser().ifPresent(this::setCurrentUser);
     }
