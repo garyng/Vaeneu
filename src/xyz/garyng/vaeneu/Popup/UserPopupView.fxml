@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<JFXListView xmlns="http://javafx.com/javafx"
+             xmlns:fx="http://javafx.com/fxml"
+             fx:controller="xyz.garyng.vaeneu.Popup.UserPopupView"
+             styleClass="popup-list-view">
+	<padding>
+		<Insets left="4"
+		        right="4"
+		        top="4"
+		        bottom="4">
+		</Insets>
+	</padding>
+	<Label fx:id="lblUsername">
+		<graphic>
+			<StackPane styleClass="custom-jfx-list-view-icon-container">
+				<FontAwesomeIconView glyphName="USER"
+				                     glyphSize="16"
+				                     styleClass="custom-jfx-list-view-icon"/>
+			</StackPane>
+		</graphic>
+	</Label>
+	<Label text="Logout"
+	       onMouseClicked="#onLogoutClicked">
+		<graphic>
+			<StackPane styleClass="custom-jfx-list-view-icon-container">
+				<FontAwesomeIconView glyphName="SIGN_OUT"
+				                     glyphSize="16"
+				                     styleClass="custom-jfx-list-view-icon"/>
+			</StackPane>
+		</graphic>
+	</Label>
+</JFXListView>

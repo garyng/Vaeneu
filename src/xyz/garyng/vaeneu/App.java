@@ -1,9 +1,7 @@
 package xyz.garyng.vaeneu;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Module;
-import com.google.inject.Singleton;
 import com.jfoenix.controls.JFXDecorator;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
@@ -17,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.impl.SimpleLogger;
-import xyz.garyng.vaeneu.Dashboard.DashboardView;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;

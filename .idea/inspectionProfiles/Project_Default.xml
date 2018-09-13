@@ -4,13 +4,6 @@
     <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myCustomPropertiesEnabled" value="true" />
       <option name="myIgnoreVendorSpecificProperties" value="false" />
-      <option name="myCustomPropertiesList">
-        <value>
-          <list size="1">
-            <item index="0" class="java.lang.String" itemvalue="-red-50" />
-          </list>
-        </value>
-      </option>
     </inspection_tool>
   </profile>
 </component>
