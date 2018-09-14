@@ -76,7 +76,6 @@ public class ViewModelBase implements ViewModel
         CurrentUserProperty.set(value);
     }
 
-
     private final Command GoBackCommand;
 
     public Command getGoBackCommand()

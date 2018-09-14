@@ -35,31 +35,29 @@
 		<GridPane alignment="CENTER"
 		          hgap="8"
 		          vgap="8">
-			<JFXButton
-					minWidth="128"
-					minHeight="128"
-					text="Bookings"
-					style="-fx-font-size: 32"
-					buttonType="RAISED"
-					styleClass="indigo-500"
-					GridPane.rowIndex="0" GridPane.columnIndex="0">
+			<JFXButton minWidth="128"
+			           minHeight="128"
+			           text="Bookings"
+			           style="-fx-font-size: 32"
+			           buttonType="RAISED"
+			           styleClass="indigo-500"
+			           GridPane.rowIndex="0" GridPane.columnIndex="0">
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-white"
 					                     glyphName="BOOKMARK"/>
 				</graphic>
 			</JFXButton>
-			<JFXButton
-					minWidth="128"
-					maxWidth="Infinity"
-					minHeight="128"
-					maxHeight="Infinity"
-					text="Venues"
-					style="-fx-font-size: 32"
-					buttonType="RAISED"
-					styleClass="teal-500"
-					GridPane.rowIndex="0" GridPane.columnIndex="1"
-					onAction="#onVenuesButtonClicked">
+			<JFXButton minWidth="128"
+			           maxWidth="Infinity"
+			           minHeight="128"
+			           maxHeight="Infinity"
+			           text="Venues"
+			           style="-fx-font-size: 32"
+			           buttonType="RAISED"
+			           styleClass="teal-500"
+			           GridPane.rowIndex="0" GridPane.columnIndex="1"
+			           onAction="#onVenuesButtonClicked">
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-white"
@@ -67,16 +65,16 @@
 				</graphic>
 			</JFXButton>
 
-			<JFXButton
-					minWidth="128"
-					maxWidth="Infinity"
-					minHeight="128"
-					maxHeight="Infinity"
-					text="Review"
-					style="-fx-font-size: 32"
-					buttonType="RAISED"
-					styleClass="white"
-					GridPane.rowIndex="1" GridPane.columnSpan="2">
+			<JFXButton fx:id="btnReview"
+			           minWidth="128"
+			           maxWidth="Infinity"
+			           minHeight="128"
+			           maxHeight="Infinity"
+			           text="Review"
+			           style="-fx-font-size: 32"
+			           buttonType="RAISED"
+			           styleClass="white"
+			           GridPane.rowIndex="1" GridPane.columnSpan="2">
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-grey"

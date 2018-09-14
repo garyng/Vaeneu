@@ -30,8 +30,8 @@ public class UserStorage extends JsonStorage<User>
         return new ArrayList<>()
         {
             {
-                add(new User(1, "admin", DigestUtils.sha1Hex("admin")));
-                add(new User(2, "user", DigestUtils.sha1Hex("user")));
+                add(new User(1, "admin", DigestUtils.sha1Hex("admin"), true));
+                add(new User(2, "user", DigestUtils.sha1Hex("user"), false));
             }
         };
     }
