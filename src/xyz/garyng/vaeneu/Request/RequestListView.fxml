@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
-<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXRippler?>
-<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXToolbar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="xyz.garyng.vaeneu.Request.RequestListView"
-            prefHeight="400.0" prefWidth="600.0">
-	<top>
-		<JFXToolbar>
-			<left>
-				<JFXRippler maskType="CIRCLE"
-				            fx:id="btnGoBack"
-				            onMouseClicked="#onGoBackButtonClicked">
-					<StackPane styleClass="padding-16">
-						<FontAwesomeIconView glyphName="ARROW_LEFT"
-						                     styleClass="icon-white"/>
-					</StackPane>
-				</JFXRippler>
-			</left>
-			<center>
-				<Label>Requests</Label>
-			</center>
-			<right>
-				<JFXRippler maskType="CIRCLE"
-				            fx:id="btnUser"
-				            onMouseClicked="#onUserPopupClicked">
-					<StackPane styleClass="padding-16">
-						<FontAwesomeIconView glyphName="USER_CIRCLE"
-						                     styleClass="icon-white"/>
-					</StackPane>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXNodesList?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="xyz.garyng.vaeneu.Request.RequestListView">
+	<BorderPane>
+		<top>
+			<JFXToolbar>
+				<left>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnGoBack"
+					            onMouseClicked="#onGoBackButtonClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="ARROW_LEFT"
+							                     styleClass="icon-white"/>
+						</StackPane>
+					</JFXRippler>
+				</left>
+				<center>
+					<Label>Requests</Label>
+				</center>
+				<right>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnUser"
+					            onMouseClicked="#onUserPopupClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="USER_CIRCLE"
+							                     styleClass="icon-white"/>
+						</StackPane>
 
-				</JFXRippler>
-			</right>
-		</JFXToolbar>
-	</top>
-
-</BorderPane>
+					</JFXRippler>
+				</right>
+			</JFXToolbar>
+		</top>
+		<center>
+			<JFXListView
+					fx:id="lvRequests">
+			</JFXListView>
+		</center>
+	</BorderPane>
+	<JFXNodesList stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="main-button">
+			<graphic>
+				<FontAwesomeIconView glyphName="PLUS"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="32"/>
+		</StackPane.margin>
+	</JFXNodesList>
+</StackPane>

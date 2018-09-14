@@ -21,6 +21,7 @@ import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Module.*;
+import xyz.garyng.vaeneu.Request.RequestListViewModel;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;
 
@@ -65,9 +66,9 @@ public class App extends MvvmfxGuiceApplication
 
         primaryStage.setScene(scene);
 
+        // automate ui
         _navigation.GoTo(LoginViewModel.class, vm ->
         {
-            // automate ui
             vm.setUsername("admin");
             vm.setPassword("admin");
             vm.loginCommand().execute();
@@ -76,6 +77,8 @@ public class App extends MvvmfxGuiceApplication
         _navigation.GoTo(DashboardViewModel.class, vm ->
         {
         }, false);
+
+        _navigation.GoTo(RequestListViewModel.class);
 
         primaryStage.show();
     }

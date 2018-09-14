@@ -2,6 +2,7 @@ package xyz.garyng.vaeneu.Module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
+import xyz.garyng.vaeneu.Model.Request;
 import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.Query.*;
@@ -25,5 +26,8 @@ public class QueryModule extends AbstractModule
         bind(new TypeLiteral<IQueryHandler<GetVenueById, Venue>>()
         {
         }).to(GetVenueByIdQueryHandler.class);
+        bind(new TypeLiteral<IQueryHandler<GetAllRequest, List<Request>>>()
+        {
+        }).to(GetAllRequestQueryHandler.class);
     }
 }

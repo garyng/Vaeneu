@@ -1,11 +1,13 @@
 package xyz.garyng.vaeneu.Request;
 
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.controls.JFXRippler;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
+import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -20,6 +22,7 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
 
     public JFXRippler btnGoBack;
     public JFXRippler btnUser;
+    public JFXListView lvRequests;
     private JFXPopup _popup;
 
     @InjectViewModel
@@ -28,6 +31,10 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        lvRequests.setCellFactory(CachedViewModelCellFactory.createForFxmlView(RequestListItemView.class));
+        lvRequests.setItems(_viewModel.requestsProperty());
+        _viewModel.SelectedRequestProperty().bind(lvRequests.getSelectionModel().selectedItemProperty());
+
         btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
         btnUser.visibleProperty().bind(_viewModel.IsAuthenticatedProperty());
         ViewTuple<UserPopupView, UserPopupViewModel> popup = FluentViewLoader.fxmlView(UserPopupView.class).load();

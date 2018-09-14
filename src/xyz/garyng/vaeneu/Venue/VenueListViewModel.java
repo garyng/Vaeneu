@@ -23,7 +23,6 @@ public class VenueListViewModel extends ViewModelBase
     // SelectedVenueProperty
     private final ObjectProperty<VenueListItemViewModel> SelectedVenueProperty = new SimpleObjectProperty<>(this, "SelectedVenue");
 
-
     public final ObjectProperty<VenueListItemViewModel> SelectedVenueProperty()
     {
         return SelectedVenueProperty;
