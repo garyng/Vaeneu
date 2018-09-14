@@ -3,7 +3,6 @@ package xyz.garyng.vaeneu.Venue;
 import com.jfoenix.controls.JFXRippler;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -37,6 +36,6 @@ public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initia
 
     public void onGoBackButtonClicked(MouseEvent mouseEvent)
     {
-        _viewModel.getGoBackCommand().execute();
+        _viewModel.goBackCommand().execute();
     }
 }

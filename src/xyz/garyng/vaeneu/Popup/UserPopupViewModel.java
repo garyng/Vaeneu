@@ -13,18 +13,18 @@ import xyz.garyng.vaeneu.ViewModelBase;
 
 public class UserPopupViewModel extends ViewModelBase
 {
-    private Command _logoutCommand;
+    private Command logoutCommand;
 
     public Command getLogoutCommand()
     {
-        return _logoutCommand;
+        return logoutCommand;
     }
 
     @Inject
     public UserPopupViewModel(NavigationService navigation, AuthenticationService authentication, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
         super(navigation, authentication, queryDispatcher, commandDispatcher);
-        _logoutCommand = new DelegateCommand(this::onLogout, this.isAuthenticated());
+        logoutCommand = new DelegateCommand(this::onLogout, this.isAuthenticated());
     }
 
     private Action onLogout()

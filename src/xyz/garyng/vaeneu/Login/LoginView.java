@@ -27,7 +27,7 @@ public class LoginView implements FxmlView<LoginViewModel>, Initializable
     {
         tfUsername.textProperty().bindBidirectional(_viewModel.UsernameProperty());
         pfPassword.textProperty().bindBidirectional(_viewModel.PasswordProperty());
-        btnLogin.disableProperty().bind(_viewModel.getLoginCommand().executableProperty().not());
+        btnLogin.disableProperty().bind(_viewModel.loginCommand().executableProperty().not());
         lblLoginError.visibleProperty().bind(_viewModel.LoginErrorProperty());
         // https://stackoverflow.com/questions/49050623/hide-some-elements-without-occupying-space-in-javafx
         lblLoginError.managedProperty().bind(_viewModel.LoginErrorProperty());
@@ -35,6 +35,6 @@ public class LoginView implements FxmlView<LoginViewModel>, Initializable
 
     public void onLoginClicked(ActionEvent actionEvent)
     {
-        _viewModel.getLoginCommand().execute();
+        _viewModel.loginCommand().execute();
     }
 }

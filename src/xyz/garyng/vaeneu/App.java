@@ -70,7 +70,7 @@ public class App extends MvvmfxGuiceApplication
             // automate ui
             vm.setUsername("admin");
             vm.setPassword("admin");
-            vm.getLoginCommand().execute();
+            vm.loginCommand().execute();
         }, false);
 
         _navigation.GoTo(DashboardViewModel.class, vm ->

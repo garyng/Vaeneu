@@ -49,6 +49,6 @@ public class VenueListView implements FxmlView<VenueListViewModel>, Initializabl
 
     public void onGoBackButtonClicked(MouseEvent mouseEvent)
     {
-        _viewModel.getGoBackCommand().execute();
+        _viewModel.goBackCommand().execute();
     }
 }

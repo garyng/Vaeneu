@@ -2,7 +2,6 @@ package xyz.garyng.vaeneu.Venue;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +29,6 @@ public class VenueListItemView implements FxmlView<VenueListItemViewModel>, Init
 
     public void onClicked(MouseEvent mouseEvent)
     {
-        _viewModel.getGoToVenueDetailsCommand().execute();
+        _viewModel.goToVenueDetailsCommand().execute();
     }
 }

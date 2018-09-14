@@ -1,9 +1,6 @@
 package xyz.garyng.vaeneu.Login;
 
 import com.google.inject.*;
-import com.google.inject.Module;
-import com.google.inject.spi.TypeConverterBinding;
-import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
@@ -11,18 +8,13 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.Getter;
 import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
-import xyz.garyng.vaeneu.Query.QueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
-
-import java.lang.annotation.Annotation;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class LoginViewModel extends ViewModelBase
 {
@@ -80,18 +72,14 @@ public class LoginViewModel extends ViewModelBase
         _loginErrorProperty.set(value);
     }
 
-    private Command _loginCommand;
-
-    public Command getLoginCommand()
-    {
-        return _loginCommand;
-    }
+    @Getter
+    private Command loginCommand;
 
     @Inject
     public LoginViewModel(NavigationService navigation, AuthenticationService authentication, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
         super(navigation, authentication, queryDispatcher, commandDispatcher);
-        _loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
+        loginCommand = new DelegateCommand(this::onLogin, _usernameProperty.isNotEmpty().and(_passwordProperty.isNotEmpty()));
     }
 
     private Action onLogin()

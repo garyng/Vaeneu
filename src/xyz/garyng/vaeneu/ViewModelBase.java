@@ -8,6 +8,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import lombok.Getter;
 import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Model.User;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
@@ -76,12 +77,8 @@ public class ViewModelBase implements ViewModel
         CurrentUserProperty.set(value);
     }
 
-    private final Command GoBackCommand;
-
-    public Command getGoBackCommand()
-    {
-        return GoBackCommand;
-    }
+    @Getter
+    private final Command goBackCommand;
 
     public ViewModelBase(NavigationService navigation, AuthenticationService authentication,
                          IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
@@ -93,9 +90,8 @@ public class ViewModelBase implements ViewModel
         CanGoBackProperty.bind(_navigation.CanGoBackProperty());
         setIsAuthenticated(_authentication.IsAuthenticated());
         _authentication.CurrentUser().ifPresent(this::setCurrentUser);
-        GoBackCommand = new DelegateCommand(() -> new Action()
+        goBackCommand = new DelegateCommand(() -> new Action()
         {
-
             @Override
             protected void action() throws Exception
             {

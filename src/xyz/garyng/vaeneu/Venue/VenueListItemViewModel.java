@@ -9,6 +9,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.Getter;
 import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
@@ -72,12 +73,8 @@ public class VenueListItemViewModel extends ViewModelBase
         CapacityProperty.set(value);
     }
 
-    public Command getGoToVenueDetailsCommand()
-    {
-        return GoToVenueDetailsCommand;
-    }
-
-    private final Command GoToVenueDetailsCommand;
+    @Getter
+    private final Command goToVenueDetailsCommand;
 
     @Inject
     public VenueListItemViewModel(NavigationService navigation, AuthenticationService authentication,
@@ -89,7 +86,7 @@ public class VenueListItemViewModel extends ViewModelBase
         setDescription(venue.description());
         setCapacity(venue.capacity());
 
-        GoToVenueDetailsCommand = new DelegateCommand(() -> new Action()
+        goToVenueDetailsCommand = new DelegateCommand(() -> new Action()
         {
             @Override
             protected void action()
