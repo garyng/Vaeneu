@@ -2,7 +2,6 @@ package xyz.garyng.vaeneu.Venue;
 
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-import com.google.inject.assistedinject.AssistedInject;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;

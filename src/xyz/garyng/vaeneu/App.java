@@ -1,9 +1,10 @@
 package xyz.garyng.vaeneu;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Module;
 import com.jfoenix.controls.JFXDecorator;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.guice.MvvmfxGuiceApplication;
@@ -19,17 +20,14 @@ import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
-import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.Module.*;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;
-import xyz.garyng.vaeneu.Venue.VenueListItemViewModel;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 @Slf4j
 public class App extends MvvmfxGuiceApplication
@@ -53,6 +51,10 @@ public class App extends MvvmfxGuiceApplication
         ViewTuple<RootView, RootViewModel> root = FluentViewLoader.fxmlView(RootView.class).load();
 
         JFXDecorator decorator = new JFXDecorator(primaryStage, root.getView());
+        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.LOCATION_ARROW);
+        icon.setStyleClass("icon-white");
+        decorator.setGraphic(icon);
+
         Scene scene = new Scene(decorator, 600, 600);
         ObservableList<String> stylesheets = scene.getStylesheets();
         stylesheets.addAll(App.class.getResource("resource/css/jfoenix-fonts.css").toExternalForm(),

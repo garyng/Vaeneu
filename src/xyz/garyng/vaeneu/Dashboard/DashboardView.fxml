@@ -37,7 +37,7 @@
 		          vgap="8">
 			<JFXButton minWidth="128"
 			           minHeight="128"
-			           text="Bookings"
+			           text="Requests"
 			           style="-fx-font-size: 32"
 			           buttonType="RAISED"
 			           styleClass="indigo-500"
@@ -45,7 +45,7 @@
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-white"
-					                     glyphName="BOOKMARK"/>
+					                     glyphName="PLUS"/>
 				</graphic>
 			</JFXButton>
 			<JFXButton minWidth="128"
