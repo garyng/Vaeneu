@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXRippler?>
-<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="xyz.garyng.vaeneu.Dashboard.DashboardView"
@@ -35,13 +30,15 @@
 		<GridPane alignment="CENTER"
 		          hgap="8"
 		          vgap="8">
-			<JFXButton minWidth="128"
+			<JFXButton fx:id="btnRequests"
+			           minWidth="128"
 			           minHeight="128"
 			           text="Requests"
 			           style="-fx-font-size: 32"
 			           buttonType="RAISED"
 			           styleClass="indigo-500"
-			           GridPane.rowIndex="0" GridPane.columnIndex="0">
+			           GridPane.rowIndex="0" GridPane.columnIndex="0"
+			           onAction="#onRequestsButtonClicked">
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-white"
@@ -74,7 +71,8 @@
 			           style="-fx-font-size: 32"
 			           buttonType="RAISED"
 			           styleClass="white"
-			           GridPane.rowIndex="1" GridPane.columnSpan="2">
+			           GridPane.rowIndex="1" GridPane.columnSpan="2"
+			           onAction="#onReviewButtonClicked">
 				<graphic>
 					<FontAwesomeIconView glyphSize="32"
 					                     styleClass="icon-grey"
