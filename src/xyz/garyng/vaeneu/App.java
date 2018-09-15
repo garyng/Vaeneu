@@ -98,7 +98,6 @@ public class App extends MvvmfxGuiceApplication
         modules.add(new ViewModelsFactoryModule());
     }
 
-
     private void onUncaughtException(Thread thread, Throwable throwable)
     {
         _logger.error("Uncaught exception", throwable);
