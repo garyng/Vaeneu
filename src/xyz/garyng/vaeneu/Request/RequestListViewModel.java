@@ -53,6 +53,8 @@ public class RequestListViewModel extends ViewModelBase
 
     @Getter
     private final Command cancelRequestCommand;
+    @Getter
+    private final Command addRequestCommand;
 
     @Inject
     public RequestListViewModel(NavigationService navigation, AuthenticationService authentication,
@@ -63,7 +65,20 @@ public class RequestListViewModel extends ViewModelBase
         _dialogService = dialogService;
         _factory = factory;
         cancelRequestCommand = new DelegateCommand(this::onCancelRequest);
+        addRequestCommand = new DelegateCommand(this::onAddRequest);
         GetAllRequests();
+    }
+
+    private Action onAddRequest()
+    {
+        return new Action()
+        {
+            @Override
+            protected void action()
+            {
+                _navigation.GoTo(SelectVenueViewModel.class);
+            }
+        };
     }
 
     private void GetAllRequests()
@@ -97,4 +112,5 @@ public class RequestListViewModel extends ViewModelBase
             }
         };
     }
+
 }

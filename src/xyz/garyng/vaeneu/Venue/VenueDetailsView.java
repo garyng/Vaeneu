@@ -1,8 +1,10 @@
 package xyz.garyng.vaeneu.Venue;
 
+import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXRippler;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -20,7 +22,7 @@ public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initia
     public JFXRippler btnGoBack;
     public Label lblCapacity;
     public Label lblDescription;
-    public ScrollPane scrollPane;
+    public JFXNodesList nlAdd;
     @InjectViewModel
     private VenueDetailsViewModel _viewModel;
 
@@ -37,5 +39,9 @@ public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initia
     public void onGoBackButtonClicked(MouseEvent mouseEvent)
     {
         _viewModel.goBackCommand().execute();
+    }
+
+    public void onAddRequestButtonClicked(ActionEvent actionEvent)
+    {
     }
 }

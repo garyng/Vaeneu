@@ -4,41 +4,65 @@
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="xyz.garyng.vaeneu.Venue.VenueDetailsView"
-            prefHeight="400.0" prefWidth="600.0">
-	<top>
-		<JFXToolbar>
-			<left>
-				<JFXRippler maskType="CIRCLE"
-				            fx:id="btnGoBack"
-				            onMouseClicked="#onGoBackButtonClicked">
+<?import com.jfoenix.controls.JFXNodesList?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Tooltip?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="xyz.garyng.vaeneu.Venue.VenueDetailsView">
+	<BorderPane>
+		<top>
+			<JFXToolbar>
+				<left>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnGoBack"
+					            onMouseClicked="#onGoBackButtonClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="ARROW_LEFT"
+							                     styleClass="icon-white"/>
+						</StackPane>
+					</JFXRippler>
+				</left>
+				<center>
 					<StackPane styleClass="padding-16">
-						<FontAwesomeIconView glyphName="ARROW_LEFT"
-						                     styleClass="icon-white"/>
+						<Label fx:id="lblVenueName"/>
 					</StackPane>
-				</JFXRippler>
-			</left>
-			<center>
-				<StackPane styleClass="padding-16">
-					<Label fx:id="lblVenueName"/>
-				</StackPane>
-			</center>
-		</JFXToolbar>
-	</top>
-	<center>
-		<VBox>
-			<Label fx:id="lblCapacity"
-			       styleClass="subhead, padding-8"/>
-			<Label fx:id="lblDescription"
-			       styleClass="body1, padding-8"
-			       wrapText="true"/>
-		</VBox>
-	</center>
-	<!--todo: check availability-->
-</BorderPane>
+				</center>
+			</JFXToolbar>
+		</top>
+		<center>
+			<VBox>
+				<Label fx:id="lblCapacity"
+				       styleClass="subhead, padding-8"/>
+				<Label fx:id="lblDescription"
+				       styleClass="body1, padding-8"
+				       wrapText="true"/>
+			</VBox>
+		</center>
+	</BorderPane>
+	<JFXNodesList fx:id="nlAdd"
+	              stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="main-button"
+		           onAction="#onAddRequestButtonClicked">
+			<tooltip>
+				<Tooltip text="Add new request"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="PLUS"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="32"/>
+		</StackPane.margin>
+	</JFXNodesList>
+
+</StackPane>

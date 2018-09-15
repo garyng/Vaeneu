@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="xyz.garyng.vaeneu.Request.SelectVenueView"
+           prefHeight="400.0" prefWidth="600.0">
+	<BorderPane>
+		<top>
+			<JFXToolbar>
+				<left>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnGoBack"
+					            onMouseClicked="#onGoBackButtonClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="ARROW_LEFT"
+							                     styleClass="icon-white"/>
+						</StackPane>
+					</JFXRippler>
+				</left>
+				<center>
+					<Label>Select Venue</Label>
+				</center>
+			</JFXToolbar>
+		</top>
+		<center>
+			<JFXListView
+					fx:id="lvVenues">
+			</JFXListView>
+		</center>
+
+	</BorderPane>
+</StackPane>

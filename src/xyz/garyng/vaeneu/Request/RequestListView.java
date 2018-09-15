@@ -70,6 +70,7 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
     public void onAddRequestButtonClicked(ActionEvent actionEvent)
     {
         closeNodeList();
+        _viewModel.addRequestCommand().execute();
     }
 
     public void onCancelRequestButtonClicked(ActionEvent actionEvent)
