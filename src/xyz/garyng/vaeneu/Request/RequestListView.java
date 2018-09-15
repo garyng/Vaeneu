@@ -11,6 +11,7 @@ import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -62,5 +63,26 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
     public void onGoBackButtonClicked(MouseEvent mouseEvent)
     {
         _viewModel.goBackCommand().execute();
+    }
+
+    public void onAddRequestButtonClicked(ActionEvent actionEvent)
+    {
+        closeNodeList();
+    }
+
+    public void onCancelRequestButtonClicked(ActionEvent actionEvent)
+    {
+        closeNodeList();
+    }
+
+    public void onShowDetailsButtonClicked(ActionEvent actionEvent)
+    {
+        closeNodeList();
+    }
+
+    private void closeNodeList()
+    {
+        nlAdd.animateList(false);
+        nlDetails.animateList(false);
     }
 }

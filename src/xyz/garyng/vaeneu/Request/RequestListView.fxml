@@ -53,7 +53,8 @@
 	              stylesheets="@../resource/css/jfoenix-components.css"
 	              StackPane.alignment="BOTTOM_RIGHT">
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
-		           styleClass="main-button">
+		           styleClass="main-button"
+		           onAction="#onAddRequestButtonClicked">
 			<tooltip>
 				<Tooltip text="Add new request"/>
 			</tooltip>
@@ -85,7 +86,8 @@
 			</graphic>
 		</JFXButton>
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
-		           styleClass="animated-option-button">
+		           styleClass="animated-option-button"
+		           onAction="#onAddRequestButtonClicked">
 			<tooltip>
 				<Tooltip text="Add new request"/>
 			</tooltip>
@@ -96,7 +98,8 @@
 			</graphic>
 		</JFXButton>
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
-		           styleClass="animated-option-button">
+		           styleClass="animated-option-button"
+		           onAction="#onCancelRequestButtonClicked">
 			<tooltip>
 				<Tooltip text="Cancel request"/>
 			</tooltip>
@@ -107,7 +110,8 @@
 			</graphic>
 		</JFXButton>
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
-		           styleClass="animated-option-button">
+		           styleClass="animated-option-button"
+		           onAction="#onShowDetailsButtonClicked">
 			<tooltip>
 				<Tooltip text="Show more details"/>
 			</tooltip>
