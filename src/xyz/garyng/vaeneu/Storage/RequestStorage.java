@@ -16,7 +16,7 @@ public class RequestStorage extends JsonStorage<Request>
     @Override
     String GetFilename()
     {
-        return Request.class.getName();
+        return RequestStorage.class.getName();
     }
 
     @Override
@@ -83,6 +83,36 @@ public class RequestStorage extends JsonStorage<Request>
                         .status(RequestStatus.Pending)
                         .startDateTime(base.plusDays(1).plusHours(17))
                         .endDateTime(base.plusDays(1).plusHours(18))
+                        .build());
+                // ---
+
+                add(Request.builder()
+                        .id(6)
+                        .venueId(1)
+                        .requesterId(1)
+                        .reviewerId(OptionalInt.empty())
+                        .status(RequestStatus.Accepted)
+                        .startDateTime(base.plusDays(2).plusHours(17))
+                        .endDateTime(base.plusDays(2).plusHours(18))
+                        .build());
+
+                add(Request.builder()
+                        .id(7)
+                        .venueId(1)
+                        .requesterId(1)
+                        .reviewerId(OptionalInt.empty())
+                        .status(RequestStatus.Cancelled)
+                        .startDateTime(base.plusDays(1).plusHours(10))
+                        .endDateTime(base.plusDays(1).plusHours(11))
+                        .build());
+                add(Request.builder()
+                        .id(8)
+                        .venueId(1)
+                        .requesterId(1)
+                        .reviewerId(OptionalInt.empty())
+                        .status(RequestStatus.Rejected)
+                        .startDateTime(base.plusDays(1).plusHours(11).plusMinutes(30))
+                        .endDateTime(base.plusDays(1).plusHours(14).plusMinutes(30))
                         .build());
             }
         };
