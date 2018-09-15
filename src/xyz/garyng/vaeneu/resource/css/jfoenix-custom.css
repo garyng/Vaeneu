@@ -1104,3 +1104,7 @@
 .padding-64 {
 	-fx-padding: 64px;
 }
+
+.opacity-70 {
+	-fx-opacity: 70%;
+}

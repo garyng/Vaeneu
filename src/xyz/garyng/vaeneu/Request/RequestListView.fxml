@@ -11,6 +11,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.VBox?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="xyz.garyng.vaeneu.Request.RequestListView">
@@ -46,6 +47,16 @@
 		<center>
 			<JFXListView
 					fx:id="lvRequests">
+				<placeholder>
+					<VBox alignment="CENTER">
+						<StackPane styleClass="padding-8, opacity-70">
+							<FontAwesomeIconView glyphName="SPACE_SHUTTLE"
+							                     glyphSize="64"/>
+						</StackPane>
+						<Label styleClass="display1"
+						       text="No requests found..."/>
+					</VBox>
+				</placeholder>
 			</JFXListView>
 		</center>
 	</BorderPane>

@@ -51,6 +51,11 @@ public class RequestListViewModel extends ViewModelBase
         super(navigation, authentication, queryDispatcher, commandDispatcher);
         _factory = factory;
 
+        GetAllRequests();
+    }
+
+    private void GetAllRequests()
+    {
         _queryDispatcher.DispatchList(Request.class,
                 new GetAllRequest())
                 .map(venues ->
@@ -58,8 +63,5 @@ public class RequestListViewModel extends ViewModelBase
                                 .map(_factory::CreateRequestListItemViewModel)
                                 .collect(Collectors.toList()))
                 .ifPresent(requestsProperty::setAll);
-
-        // map
-        // when there is no request
     }
 }
