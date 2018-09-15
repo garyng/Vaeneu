@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="xyz.garyng.vaeneu.Root.RootView"
-            fx:id="rootPane"
-            prefHeight="400.0" prefWidth="600.0">
-</AnchorPane>
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="xyz.garyng.vaeneu.Root.RootView"
+           fx:id="root">
+	<AnchorPane fx:id="contentPane"/>
+	<JFXDialog fx:id="rootDialog">
+		<JFXDialogLayout>
+			<heading>
+				<Label fx:id="lblTitle"/>
+			</heading>
+			<body>
+				<Label fx:id="lblBody"/>
+			</body>
+			<actions>
+				<JFXButton fx:id="btnAccept"
+				           styleClass="dialog-accept"
+				           onAction="#onAcceptButtonClicked"/>
+				<JFXButton fx:id="btnReject"
+				           styleClass="dialog-reject"
+				           onAction="#onRejectButtonClicked"/>
+			</actions>
+		</JFXDialogLayout>
+	</JFXDialog>
+</StackPane>

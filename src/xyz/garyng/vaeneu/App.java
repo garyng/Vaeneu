@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.impl.SimpleLogger;
 import xyz.garyng.vaeneu.Dashboard.DashboardViewModel;
+import xyz.garyng.vaeneu.Dialog.IDialogService;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Module.*;
@@ -35,6 +36,8 @@ public class App extends MvvmfxGuiceApplication
 {
     @Inject
     private NavigationService _navigation;
+    @Inject
+    private IDialogService _dialogService;
 
     public static void main(String[] args)
     {
@@ -63,6 +66,7 @@ public class App extends MvvmfxGuiceApplication
                 App.class.getResource("resource/css/jfoenix-custom.css").toExternalForm());
 
         _navigation.RegisterRoot(root.getViewModel());
+        _dialogService.RegisterHost(root.getViewModel());
 
         primaryStage.setScene(scene);
 

@@ -65,6 +65,11 @@
 	-fx-font-weight: BOLD;
 	-fx-padding: 0.7em 0.8em;
 }
+.dialog-reject {
+	-fx-text-fill: #ff4081;
+	-fx-font-weight: BOLD;
+	-fx-padding: 0.7em 0.8em;
+}
 
 /*******************************************************************************
  *                                                                             *
