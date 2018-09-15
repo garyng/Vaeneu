@@ -1085,6 +1085,10 @@
 	-fx-padding: 8px;
 }
 
+.padding-left-4 {
+	-fx-padding: 0 0 0 4px;
+}
+
 .padding-16 {
 	-fx-padding: 16px;
 }
@@ -1100,4 +1104,3 @@
 .padding-64 {
 	-fx-padding: 64px;
 }
-

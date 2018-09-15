@@ -10,6 +10,7 @@
 <?import com.jfoenix.controls.JFXNodesList?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tooltip?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="xyz.garyng.vaeneu.Request.RequestListView">
@@ -48,16 +49,75 @@
 			</JFXListView>
 		</center>
 	</BorderPane>
-	<JFXNodesList stylesheets="@../resource/css/jfoenix-components.css"
+	<JFXNodesList fx:id="nlAdd"
+	              stylesheets="@../resource/css/jfoenix-components.css"
 	              StackPane.alignment="BOTTOM_RIGHT">
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
 		           styleClass="main-button">
+			<tooltip>
+				<Tooltip text="Add new request"/>
+			</tooltip>
 			<graphic>
 				<FontAwesomeIconView glyphName="PLUS"
 				                     size="24"
 				                     styleClass="main-icon"/>
 			</graphic>
 		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="32"/>
+		</StackPane.margin>
+	</JFXNodesList>
+	<JFXNodesList fx:id="nlDetails"
+	              rotate="180.0"
+	              stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT"
+	              spacing="16">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="main-button">
+			<tooltip>
+				<Tooltip text="More options..."/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="ELLIPSIS_V"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button">
+			<tooltip>
+				<Tooltip text="Add new request"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="PLUS"
+				                     size="24"
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button">
+			<tooltip>
+				<Tooltip text="Cancel request"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="CLOSE"
+				                     size="24"
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button">
+			<tooltip>
+				<Tooltip text="Show more details"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="EYE"
+				                     size="24"
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+
 		<StackPane.margin>
 			<Insets bottom="32"
 			        right="32"/>
