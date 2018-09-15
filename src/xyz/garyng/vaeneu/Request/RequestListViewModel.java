@@ -69,7 +69,7 @@ public class RequestListViewModel extends ViewModelBase
     private void GetAllRequests()
     {
         _queryDispatcher.DispatchList(Request.class,
-                new GetAllRequest())
+                GetAllRequest.builder().userId(_authentication.CurrentUser().get().id()).build())
                 .map(venues ->
                         venues.stream()
                                 .map(_factory::CreateRequestListItemViewModel)

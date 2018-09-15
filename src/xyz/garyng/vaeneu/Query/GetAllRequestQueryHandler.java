@@ -6,6 +6,7 @@ import xyz.garyng.vaeneu.Storage.IStorage;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class GetAllRequestQueryHandler implements IQueryHandler<GetAllRequest, List<Request>>
 {
@@ -21,6 +22,10 @@ public class GetAllRequestQueryHandler implements IQueryHandler<GetAllRequest, L
     @Override
     public Optional<List<Request>> Execute(GetAllRequest parameter)
     {
-        return Optional.of(_storage.Data());
+        return Optional.of(
+                _storage.Data()
+                        .stream()
+                        .filter(v -> v.requesterId() == parameter.userId())
+                        .collect(Collectors.toList()));
     }
 }
