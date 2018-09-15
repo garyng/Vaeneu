@@ -32,20 +32,13 @@
 		</JFXToolbar>
 	</top>
 	<center>
-		<ScrollPane fx:id="scrollPane"
-		            fitToWidth="true"
-		            fitToHeight="true"
-		            hbarPolicy="NEVER"
-		            vbarPolicy="ALWAYS">
-			<VBox>
-				<Label fx:id="lblCapacity"
-				       styleClass="subhead, padding-8"/>
-				<Label fx:id="lblDescription"
-				       styleClass="body1, padding-8"
-				       wrapText="true"/>
-			</VBox>
-
-		</ScrollPane>
+		<VBox>
+			<Label fx:id="lblCapacity"
+			       styleClass="subhead, padding-8"/>
+			<Label fx:id="lblDescription"
+			       styleClass="body1, padding-8"
+			       wrapText="true"/>
+		</VBox>
 	</center>
 	<!--todo: check availability-->
 </BorderPane>
