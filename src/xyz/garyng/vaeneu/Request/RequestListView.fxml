@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXRippler?>
-<?import com.jfoenix.controls.JFXToolbar?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import com.jfoenix.controls.JFXNodesList?>
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="xyz.garyng.vaeneu.Request.RequestListView">
@@ -108,7 +101,8 @@
 				                     styleClass="sub-icon"/>
 			</graphic>
 		</JFXButton>
-		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		<JFXButton fx:id="btnCancelRequest"
+		           contentDisplay="GRAPHIC_ONLY"
 		           styleClass="animated-option-button"
 		           onAction="#onCancelRequestButtonClicked">
 			<tooltip>

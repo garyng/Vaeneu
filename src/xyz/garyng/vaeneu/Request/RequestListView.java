@@ -48,6 +48,7 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
         nlDetails.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
         nlAdd.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNull());
 
+        btnCancelRequest.disableProperty().bind(EasyBind.map(_viewModel.SelectedRequestProperty(), r -> !r.getRequest().status().equals(RequestStatus.Pending)));
 
         btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
         btnUser.visibleProperty().bind(_viewModel.IsAuthenticatedProperty());
