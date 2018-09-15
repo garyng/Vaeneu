@@ -1,9 +1,6 @@
 package xyz.garyng.vaeneu.Request;
 
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXNodesList;
-import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXRippler;
+import com.jfoenix.controls.*;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -13,9 +10,12 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import org.fxmisc.easybind.EasyBind;
+import xyz.garyng.vaeneu.Model.RequestStatus;
 import xyz.garyng.vaeneu.Popup.UserPopupView;
 import xyz.garyng.vaeneu.Popup.UserPopupViewModel;
 
@@ -31,6 +31,7 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
     public JFXListView lvRequests;
     public JFXNodesList nlDetails;
     public JFXNodesList nlAdd;
+    public JFXButton btnCancelRequest;
     private JFXPopup _popup;
 
     @InjectViewModel
@@ -74,6 +75,7 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
     public void onCancelRequestButtonClicked(ActionEvent actionEvent)
     {
         closeNodeList();
+        _viewModel.cancelRequestCommand().execute();
     }
 
     public void onShowDetailsButtonClicked(ActionEvent actionEvent)

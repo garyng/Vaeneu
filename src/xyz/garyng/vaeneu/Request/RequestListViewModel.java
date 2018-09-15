@@ -1,14 +1,21 @@
 package xyz.garyng.vaeneu.Request;
 
 import com.google.inject.Inject;
+import de.saxsys.mvvmfx.utils.commands.Action;
+import de.saxsys.mvvmfx.utils.commands.Command;
+import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
+import xyz.garyng.vaeneu.Command.CancelRequestById;
 import xyz.garyng.vaeneu.Command.ICommandDispatcher;
+import xyz.garyng.vaeneu.Dialog.DialogParameters;
+import xyz.garyng.vaeneu.Dialog.IDialogService;
 import xyz.garyng.vaeneu.Factory.ViewModelsFactory;
 import xyz.garyng.vaeneu.Model.Request;
+import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Query.GetAllRequest;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
@@ -41,16 +48,21 @@ public class RequestListViewModel extends ViewModelBase
         SelectedRequestProperty.set(value);
     }
 
+    private final IDialogService _dialogService;
     private final ViewModelsFactory _factory;
+
+    @Getter
+    private final Command cancelRequestCommand;
 
     @Inject
     public RequestListViewModel(NavigationService navigation, AuthenticationService authentication,
                                 IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher,
-                                ViewModelsFactory factory)
+                                IDialogService dialogService, ViewModelsFactory factory)
     {
         super(navigation, authentication, queryDispatcher, commandDispatcher);
+        _dialogService = dialogService;
         _factory = factory;
-
+        cancelRequestCommand = new DelegateCommand(this::onCancelRequest);
         GetAllRequests();
     }
 
@@ -63,5 +75,26 @@ public class RequestListViewModel extends ViewModelBase
                                 .map(_factory::CreateRequestListItemViewModel)
                                 .collect(Collectors.toList()))
                 .ifPresent(requestsProperty::setAll);
+    }
+
+    private Action onCancelRequest()
+    {
+        return new Action()
+        {
+            @Override
+            protected void action()
+            {
+                Request r = getSelectedRequest().getRequest();
+                Venue v = getSelectedRequest().getVenue();
+                _dialogService.ShowConfirmationDialog(DialogParameters.builder()
+                        .body(String.format("Cancel your request for %s (#%d)?", v.name(), r.id()))
+                        .onAccepted(() ->
+                        {
+                            _commandDispatcher.Dispatch(CancelRequestById.builder().id(r.id()).build());
+                            GetAllRequests();
+                        })
+                        .build());
+            }
+        };
     }
 }
