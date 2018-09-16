@@ -55,6 +55,8 @@ public class RequestListViewModel extends ViewModelBase
     private final Command cancelRequestCommand;
     @Getter
     private final Command addRequestCommand;
+    @Getter
+    private final Command onRefreshCommand;
 
     @Inject
     public RequestListViewModel(NavigationService navigation, AuthenticationService authentication,
@@ -66,6 +68,14 @@ public class RequestListViewModel extends ViewModelBase
         _factory = factory;
         cancelRequestCommand = new DelegateCommand(this::onCancelRequest);
         addRequestCommand = new DelegateCommand(this::onAddRequest);
+        onRefreshCommand = new DelegateCommand(() -> new Action()
+        {
+            @Override
+            protected void action() throws Exception
+            {
+                GetAllRequests();
+            }
+        });
         GetAllRequests();
     }
 
@@ -112,5 +122,4 @@ public class RequestListViewModel extends ViewModelBase
             }
         };
     }
-
 }

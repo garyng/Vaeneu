@@ -54,10 +54,23 @@
 		</center>
 	</BorderPane>
 	<JFXNodesList fx:id="nlAdd"
+	              rotate="180.0"
 	              stylesheets="@../resource/css/jfoenix-components.css"
-	              StackPane.alignment="BOTTOM_RIGHT">
+	              StackPane.alignment="BOTTOM_RIGHT"
+	              spacing="16">
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
-		           styleClass="main-button"
+		           styleClass="main-button">
+			<tooltip>
+				<Tooltip text="More options..."/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="ELLIPSIS_V"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button"
 		           onAction="#onAddRequestButtonClicked">
 			<tooltip>
 				<Tooltip text="Add new request"/>
@@ -65,7 +78,19 @@
 			<graphic>
 				<FontAwesomeIconView glyphName="PLUS"
 				                     size="24"
-				                     styleClass="main-icon"/>
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button"
+		           onAction="#onRefreshButtonClicked">
+			<tooltip>
+				<Tooltip text="Refresh"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="REFRESH"
+				                     size="24"
+				                     styleClass="sub-icon"/>
 			</graphic>
 		</JFXButton>
 		<StackPane.margin>
@@ -116,17 +141,16 @@
 		</JFXButton>
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
 		           styleClass="animated-option-button"
-		           onAction="#onShowDetailsButtonClicked">
+		           onAction="#onRefreshButtonClicked">
 			<tooltip>
-				<Tooltip text="Show more details"/>
+				<Tooltip text="Refresh"/>
 			</tooltip>
 			<graphic>
-				<FontAwesomeIconView glyphName="EYE"
+				<FontAwesomeIconView glyphName="REFRESH"
 				                     size="24"
 				                     styleClass="sub-icon"/>
 			</graphic>
 		</JFXButton>
-
 		<StackPane.margin>
 			<Insets bottom="32"
 			        right="32"/>

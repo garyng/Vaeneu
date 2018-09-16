@@ -14,6 +14,7 @@ import org.fxmisc.easybind.EasyBind;
 import xyz.garyng.vaeneu.Model.RequestStatus;
 import xyz.garyng.vaeneu.Popup.UserPopupView;
 import xyz.garyng.vaeneu.Popup.UserPopupViewModel;
+import xyz.garyng.vaeneu.Query.GetAllRequest;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,7 +44,6 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
 
         nlDetails.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
         nlAdd.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNull());
-
         btnCancelRequest.disableProperty().bind(EasyBind.map(_viewModel.SelectedRequestProperty(), r -> !r.getRequest().status().equals(RequestStatus.Pending)));
 
         btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
@@ -74,14 +74,15 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
         _viewModel.cancelRequestCommand().execute();
     }
 
-    public void onShowDetailsButtonClicked(ActionEvent actionEvent)
+    public void onRefreshButtonClicked(ActionEvent actionEvent)
     {
         closeNodeList();
+        _viewModel.onRefreshCommand().execute();
     }
 
     private void closeNodeList()
     {
-        nlAdd.animateList(false);
+        // nlAdd.animateList(false);
         nlDetails.animateList(false);
     }
 }
