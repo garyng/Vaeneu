@@ -33,7 +33,7 @@ public class RequestListItemView implements FxmlView<RequestListItemViewModel>, 
         lblStatus.textProperty().bind(EasyBind.map(_viewModel.RequestProperty(), r -> r.status().toString()));
         lblVenueName.textProperty().bind(EasyBind.map(_viewModel.VenueProperty(), Venue::name));
         lblRequestId.textProperty().bind(EasyBind.map(_viewModel.RequestProperty(), r -> String.format("Request #%d", r.id())));
-        lblDateTime.textProperty().bind(EasyBind.map(_viewModel.RequestProperty(), r -> String.format("%1$tY/%1$tm/%1$td (%1$ta) %1$tR - %2$tR", r.startDateTime(), r.endDateTime())));
+        lblDateTime.textProperty().bind(EasyBind.map(_viewModel.RequestProperty(), r -> String.format("%1$tY/%1$tm/%1$td (%1$ta) %1$tl:%1$tM %1$Tp - %2$tl:%2$tM %2$Tp", r.startDateTime(), r.endDateTime())));
     }
 
     private String mapStatusToIcon(Request request)
