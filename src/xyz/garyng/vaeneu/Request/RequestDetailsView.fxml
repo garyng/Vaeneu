@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="xyz.garyng.vaeneu.Request.RequestDetailsView"
+            prefHeight="400.0" prefWidth="600.0">
+	<top>
+		<JFXToolbar>
+			<left>
+				<JFXRippler maskType="CIRCLE"
+				            fx:id="btnGoBack"
+				            onMouseClicked="#onGoBackButtonClicked">
+					<StackPane styleClass="padding-16">
+						<FontAwesomeIconView glyphName="ARROW_LEFT"
+						                     styleClass="icon-white"/>
+					</StackPane>
+				</JFXRippler>
+			</left>
+			<center>
+				<StackPane styleClass="padding-16">
+					<Label fx:id="lblRequestId"/>
+				</StackPane>
+			</center>
+		</JFXToolbar>
+	</top>
+	<center>
+		<ScrollPane fitToHeight="true"
+		            fitToWidth="true">
+			<VBox>
+				<JFXRippler onMouseClicked="#onVenueClicked">
+					<StackPane alignment="CENTER_LEFT">
+						<Label fx:id="lblVenueName"
+						       styleClass="display2, padding-16"/>
+					</StackPane>
+				</JFXRippler>
+				<Label text="Requester Id"
+				       styleClass="padding-16"/>
+				<Label fx:id="lblRequesterId"
+				       styleClass="display2, padding-16"/>
+				<Label text="Date"
+				       styleClass="padding-16"/>
+				<Label fx:id="lblDate"
+				       styleClass="display2, padding-16"/>
+				<Label text="Time"
+				       styleClass="padding-16"/>
+				<Label fx:id="lblTime"
+				       styleClass="display2, padding-16"/>
+			</VBox>
+		</ScrollPane>
+	</center>
+
+</BorderPane>

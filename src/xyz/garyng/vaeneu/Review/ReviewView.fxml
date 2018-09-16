@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXRippler?>
-<?import com.jfoenix.controls.JFXToolbar?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Tooltip?>
-<?import com.jfoenix.controls.JFXNodesList?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="xyz.garyng.vaeneu.Review.ReviewView"
@@ -101,6 +96,28 @@
 		<StackPane.margin>
 			<Insets bottom="32"
 			        right="100"/>
+		</StackPane.margin>
+	</JFXNodesList>
+	<JFXNodesList fx:id="nlDetails"
+	              stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT"
+	              spacing="16">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           style="-fx-background-color: #F1F1F1;"
+		           styleClass="main-button"
+		           onAction="#onDetailsButtonClicked">
+			<tooltip>
+				<Tooltip text="Details"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="EYE"
+				                     size="24"
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="168"/>
 		</StackPane.margin>
 	</JFXNodesList>
 </StackPane>

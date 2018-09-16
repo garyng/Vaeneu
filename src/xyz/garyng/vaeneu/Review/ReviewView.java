@@ -11,7 +11,6 @@ import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.LightBase;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -30,6 +29,7 @@ public class ReviewView implements FxmlView<ReviewViewModel>, Initializable
     public JFXListView lvRequests;
     public JFXNodesList nlAccept;
     public JFXNodesList nlReject;
+    public JFXNodesList nlDetails;
     @InjectViewModel
     private ReviewViewModel _viewModel;
     private JFXPopup _popup;
@@ -41,9 +41,11 @@ public class ReviewView implements FxmlView<ReviewViewModel>, Initializable
         lvRequests.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         lvRequests.itemsProperty().bind(_viewModel.requestsProperty());
         _viewModel.selectedRequestsProperty().set(lvRequests.getSelectionModel().getSelectedItems());
+        _viewModel.SelectedRequestProperty().bind(lvRequests.getSelectionModel().selectedItemProperty());
 
         nlAccept.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
         nlReject.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
+        nlDetails.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
 
         btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
         btnUser.visibleProperty().bind(_viewModel.IsAuthenticatedProperty());
@@ -71,4 +73,8 @@ public class ReviewView implements FxmlView<ReviewViewModel>, Initializable
     }
 
 
+    public void onDetailsButtonClicked(ActionEvent actionEvent)
+    {
+        _viewModel.GoToRequestDetailsCommand().execute();
+    }
 }

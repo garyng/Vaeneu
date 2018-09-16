@@ -28,11 +28,14 @@ public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initia
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
         lblVenueName.textProperty().bind(EasyBind.map(_viewModel.VenueProperty(), Venue::name));
         lblCapacity.textProperty().bind(EasyBind.map(_viewModel.VenueProperty(),
                 v -> String.format("Capacity: %d", v.capacity())));
         lblDescription.textProperty().bind(EasyBind.map(_viewModel.VenueProperty(), Venue::description));
+        nlAdd.visibleProperty().bind(_viewModel.DisableRequestingProperty().not());
+
+
+        btnGoBack.visibleProperty().bind(_viewModel.CanGoBackProperty());
     }
 
     public void onGoBackButtonClicked(MouseEvent mouseEvent)

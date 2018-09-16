@@ -5,7 +5,9 @@ import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import lombok.Getter;
 import xyz.garyng.vaeneu.Command.AcceptRequest;
@@ -18,6 +20,7 @@ import xyz.garyng.vaeneu.Model.Request;
 import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Query.GetAllPendingRequests;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
+import xyz.garyng.vaeneu.Request.RequestDetailsViewModel;
 import xyz.garyng.vaeneu.Request.RequestListItemViewModel;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
@@ -35,10 +38,31 @@ public class ReviewViewModel extends ViewModelBase
     @Getter
     private ListProperty<RequestListItemViewModel> selectedRequestsProperty = new SimpleListProperty<>(this, "SelectedRequestsProperty", FXCollections.observableArrayList());
 
+    // SelectedRequestProperty
+    private final ObjectProperty<RequestListItemViewModel> SelectedRequestProperty = new SimpleObjectProperty<>(this, "SelectedRequest");
+
+    public final ObjectProperty<RequestListItemViewModel> SelectedRequestProperty()
+    {
+        return SelectedRequestProperty;
+    }
+
+    public final RequestListItemViewModel getSelectedRequest()
+    {
+        return SelectedRequestProperty.get();
+    }
+
+    public final void setSelectedRequest(RequestListItemViewModel value)
+    {
+        SelectedRequestProperty.set(value);
+    }
+
+
     @Getter
     private final Command AcceptRequestCommand;
     @Getter
     private final Command RejectRequestsCommand;
+    @Getter
+    private final Command GoToRequestDetailsCommand;
 
 
     @Inject
@@ -51,6 +75,15 @@ public class ReviewViewModel extends ViewModelBase
         _dialogService = dialogService;
         AcceptRequestCommand = new DelegateCommand(this::onAcceptRequests);
         RejectRequestsCommand = new DelegateCommand(this::onRejectRequests);
+        GoToRequestDetailsCommand = new DelegateCommand(() -> new Action()
+        {
+            @Override
+            protected void action() throws Exception
+            {
+                _navigation.GoTo(RequestDetailsViewModel.class, vm ->
+                        vm.setRequest(getSelectedRequest().getRequest()));
+            }
+        });
 
         GetAllRequests();
     }

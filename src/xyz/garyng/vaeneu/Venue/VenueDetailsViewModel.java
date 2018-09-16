@@ -4,7 +4,9 @@ import com.google.inject.Inject;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import xyz.garyng.vaeneu.Command.ICommandDispatcher;
@@ -42,6 +44,25 @@ public class VenueDetailsViewModel extends ViewModelBase
     {
         VenueProperty.set(value);
     }
+
+    // DisableRequestingProperty
+    private final BooleanProperty DisableRequestingProperty = new SimpleBooleanProperty(this, "DisableRequesting", false);
+
+    public final BooleanProperty DisableRequestingProperty()
+    {
+        return DisableRequestingProperty;
+    }
+
+    public final boolean isDisableRequesting()
+    {
+        return DisableRequestingProperty.get();
+    }
+
+    public final void setDisableRequesting(boolean value)
+    {
+        DisableRequestingProperty.set(value);
+    }
+
 
     @Getter
     private final Command addRequestCommand;
