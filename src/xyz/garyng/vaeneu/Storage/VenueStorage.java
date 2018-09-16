@@ -1,7 +1,7 @@
 package xyz.garyng.vaeneu.Storage;
 
-import xyz.garyng.vaeneu.Fakes.Fakes;
 import com.google.inject.TypeLiteral;
+import xyz.garyng.vaeneu.Fakes.Fakes;
 import xyz.garyng.vaeneu.Model.Venue;
 
 import java.lang.reflect.Type;

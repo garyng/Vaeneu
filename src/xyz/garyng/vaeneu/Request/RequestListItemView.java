@@ -1,6 +1,5 @@
 package xyz.garyng.vaeneu.Request;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -11,7 +10,6 @@ import xyz.garyng.vaeneu.Model.Request;
 import xyz.garyng.vaeneu.Model.Venue;
 
 import java.net.URL;
-import java.time.Duration;
 import java.util.ResourceBundle;
 
 public class RequestListItemView implements FxmlView<RequestListItemViewModel>, Initializable

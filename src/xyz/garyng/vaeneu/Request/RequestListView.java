@@ -6,20 +6,15 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 import org.fxmisc.easybind.EasyBind;
 import xyz.garyng.vaeneu.Model.RequestStatus;
 import xyz.garyng.vaeneu.Popup.UserPopupView;
 import xyz.garyng.vaeneu.Popup.UserPopupViewModel;
 
-import javax.swing.text.html.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 

@@ -1,6 +1,6 @@
 package xyz.garyng.vaeneu.Login;
 
-import com.google.inject.*;
+import com.google.inject.Inject;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;

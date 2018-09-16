@@ -14,7 +14,6 @@ import xyz.garyng.vaeneu.Query.GetAllVenue;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.Venue.VenueListItemViewModel;
-import xyz.garyng.vaeneu.Venue.VenueListViewModel;
 import xyz.garyng.vaeneu.ViewModelBase;
 
 import java.util.stream.Collectors;

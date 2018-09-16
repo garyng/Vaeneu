@@ -1,7 +1,6 @@
 package xyz.garyng.vaeneu;
 
 import com.google.inject.Inject;
-import com.jfoenix.controls.JFXDecorator;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.ViewModel;
@@ -9,13 +8,9 @@ import de.saxsys.mvvmfx.ViewTuple;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import xyz.garyng.vaeneu.Root.IRootViewModel;
 
-import java.lang.management.PlatformManagedObject;
 import java.util.Optional;
 import java.util.Stack;
 import java.util.function.Consumer;
