@@ -7,7 +7,6 @@ import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import org.fxmisc.easybind.EasyBind;
 import xyz.garyng.vaeneu.Model.Venue;
@@ -43,5 +42,6 @@ public class VenueDetailsView implements FxmlView<VenueDetailsViewModel>, Initia
 
     public void onAddRequestButtonClicked(ActionEvent actionEvent)
     {
+        _viewModel.addRequestCommand().execute();
     }
 }

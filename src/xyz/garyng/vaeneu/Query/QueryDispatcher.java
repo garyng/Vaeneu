@@ -6,10 +6,7 @@ import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
 import com.google.inject.util.Types;
 import lombok.extern.slf4j.Slf4j;
-import net.jodah.typetools.TypeResolver;
 
-import javax.management.openmbean.TabularData;
-import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;

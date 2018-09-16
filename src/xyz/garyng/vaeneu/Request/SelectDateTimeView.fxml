@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXNodesList?>
-<?import com.jfoenix.controls.JFXRippler?>
-<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="xyz.garyng.vaeneu.Venue.VenueDetailsView">
+           fx:controller="xyz.garyng.vaeneu.Request.SelectDateTimeView">
 	<BorderPane>
 		<top>
 			<JFXToolbar>
@@ -26,33 +23,48 @@
 					</JFXRippler>
 				</left>
 				<center>
-					<StackPane styleClass="padding-16">
-						<Label fx:id="lblVenueName"/>
-					</StackPane>
+					<Label>Choose Date and Time</Label>
 				</center>
 			</JFXToolbar>
 		</top>
 		<center>
-			<VBox>
-				<Label fx:id="lblCapacity"
-				       styleClass="subhead, padding-8"/>
-				<Label fx:id="lblDescription"
-				       styleClass="body1, padding-8"
-				       wrapText="true"/>
-			</VBox>
+			<BorderPane styleClass="padding-16">
+				<top>
+					<JFXDatePicker fx:id="datePicker">
+						<BorderPane.margin>
+							<Insets top="4"
+							        bottom="8"/>
+						</BorderPane.margin>
+					</JFXDatePicker>
+				</top>
+				<center>
+					<JFXListView fx:id="lvTimeSlots">
+						<placeholder>
+							<VBox alignment="CENTER">
+								<StackPane styleClass="padding-8, opacity-70">
+									<FontAwesomeIconView glyphName="SPACE_SHUTTLE"
+									                     glyphSize="64"/>
+								</StackPane>
+								<Label styleClass="display1"
+								       text="No available time slots..."/>
+							</VBox>
+						</placeholder>
+					</JFXListView>
+				</center>
+			</BorderPane>
 		</center>
 	</BorderPane>
-	<JFXNodesList fx:id="nlAdd"
+	<JFXNodesList fx:id="nlRequest"
 	              stylesheets="@../resource/css/jfoenix-components.css"
 	              StackPane.alignment="BOTTOM_RIGHT">
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
 		           styleClass="main-button"
-		           onAction="#onAddRequestButtonClicked">
+		           onAction="#onConfirmButtonClicked">
 			<tooltip>
-				<Tooltip text="Request this venue"/>
+				<Tooltip text="Confirm time slots"/>
 			</tooltip>
 			<graphic>
-				<FontAwesomeIconView glyphName="ARROW_RIGHT"
+				<FontAwesomeIconView glyphName="CHECK"
 				                     size="24"
 				                     styleClass="main-icon"/>
 			</graphic>

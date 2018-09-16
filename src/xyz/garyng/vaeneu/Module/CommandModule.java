@@ -13,5 +13,8 @@ public class CommandModule extends AbstractModule
         bind(new TypeLiteral<ICommandHandler<CancelRequestById>>()
         {
         }).to(CancelRequestByIdCommandHandler.class);
+        bind(new TypeLiteral<ICommandHandler<AddRequest>>()
+        {
+        }).to(AddRequestCommandHandler.class);
     }
 }
