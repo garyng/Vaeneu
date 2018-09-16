@@ -52,11 +52,11 @@ public class DashboardView implements FxmlView<DashboardViewModel>, Initializabl
 
     public void onReviewButtonClicked(ActionEvent actionEvent)
     {
-        // todo: go to review list
+        _viewModel.goToReviewCommand().execute();
     }
 
     public void onRequestsButtonClicked(ActionEvent actionEvent)
     {
-        _viewModel.gotoRequestListComand().execute();
+        _viewModel.goToRequestListCommand().execute();
     }
 }

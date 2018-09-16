@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import de.saxsys.mvvmfx.utils.commands.Action;
 import de.saxsys.mvvmfx.utils.commands.Command;
 import de.saxsys.mvvmfx.utils.commands.DelegateCommand;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -66,10 +67,10 @@ public class SelectDateTimeViewModel extends ViewModelBase
 
     // AvailableTimeSlotsProperty
     @Getter
-    private final SimpleListProperty<TimePeriod> AvailableTimeSlotsProperty = new SimpleListProperty<>(this, "AvailableTimeSlots", FXCollections.observableArrayList());
+    private final ListProperty<TimePeriod> AvailableTimeSlotsProperty = new SimpleListProperty<>(this, "AvailableTimeSlots", FXCollections.observableArrayList());
 
     @Getter
-    private SimpleListProperty<TimePeriod> SelectedTimeSlotsProperty = new SimpleListProperty<>(this, "AvailableTimeSlots", FXCollections.observableArrayList());
+    private ListProperty<TimePeriod> SelectedTimeSlotsProperty = new SimpleListProperty<>(this, "AvailableTimeSlots", FXCollections.observableArrayList());
 
     public final ObservableList<TimePeriod> getSelectedTimeSlots()
     {

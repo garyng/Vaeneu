@@ -9,6 +9,7 @@ import xyz.garyng.vaeneu.Command.ICommandDispatcher;
 import xyz.garyng.vaeneu.NavigationService;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Request.RequestListViewModel;
+import xyz.garyng.vaeneu.Review.ReviewViewModel;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.Venue.VenueListViewModel;
 import xyz.garyng.vaeneu.ViewModelBase;
@@ -18,7 +19,9 @@ public class DashboardViewModel extends ViewModelBase
     @Getter
     private Command goToVenueListCommand;
     @Getter
-    private Command gotoRequestListComand;
+    private Command goToRequestListCommand;
+    @Getter
+    private Command goToReviewCommand;
 
     @Inject
     public DashboardViewModel(NavigationService navigation, AuthenticationService authentication, IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
@@ -33,7 +36,7 @@ public class DashboardViewModel extends ViewModelBase
                 _navigation.GoTo(VenueListViewModel.class);
             }
         });
-        gotoRequestListComand = new DelegateCommand(() -> new Action()
+        goToRequestListCommand = new DelegateCommand(() -> new Action()
         {
             @Override
             protected void action()
@@ -41,6 +44,15 @@ public class DashboardViewModel extends ViewModelBase
                 _navigation.GoTo(RequestListViewModel.class);
             }
         });
+        goToReviewCommand = new DelegateCommand(() -> new Action()
+        {
+            @Override
+            protected void action()
+            {
+                _navigation.GoTo(ReviewViewModel.class);
+            }
+        });
+
     }
 
 }

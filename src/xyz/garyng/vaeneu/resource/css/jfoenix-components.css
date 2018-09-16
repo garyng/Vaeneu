@@ -306,7 +306,7 @@
 
 .main-button {
     -fx-pref-width: 60px;
-    -fx-background-color: #0F9D58;
+    -fx-background-color: -teal-500;
     -fx-background-radius: 60px;
     -fx-pref-height: 60px;
     -fx-min-width: -fx-pref-width;

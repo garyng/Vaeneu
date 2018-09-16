@@ -26,12 +26,15 @@ public class QueryModule extends AbstractModule
         bind(new TypeLiteral<IQueryHandler<GetVenueById, Venue>>()
         {
         }).to(GetVenueByIdQueryHandler.class);
-        bind(new TypeLiteral<IQueryHandler<GetAllRequest, List<Request>>>()
+        bind(new TypeLiteral<IQueryHandler<GetAllRequestByUserId, List<Request>>>()
         {
         }).to(GetAllRequestQueryHandler.class);
         bind(new TypeLiteral<IQueryHandler<GetRequestsByVenueIdAndDate, List<Request>>>()
         {
         }).to(GetRequestsByVenueIdAndDateQueryHandler.class);
+        bind(new TypeLiteral<IQueryHandler<GetAllPendingRequests, List<Request>>>()
+        {
+        }).to(GetAllPendingRequestsQueryHandler.class);
 
     }
 }

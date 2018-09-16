@@ -17,7 +17,7 @@ import xyz.garyng.vaeneu.Factory.ViewModelsFactory;
 import xyz.garyng.vaeneu.Model.Request;
 import xyz.garyng.vaeneu.Model.Venue;
 import xyz.garyng.vaeneu.NavigationService;
-import xyz.garyng.vaeneu.Query.GetAllRequest;
+import xyz.garyng.vaeneu.Query.GetAllRequestByUserId;
 import xyz.garyng.vaeneu.Query.IQueryDispatcher;
 import xyz.garyng.vaeneu.Service.AuthenticationService;
 import xyz.garyng.vaeneu.ViewModelBase;
@@ -94,7 +94,7 @@ public class RequestListViewModel extends ViewModelBase
     private void GetAllRequests()
     {
         _queryDispatcher.DispatchList(Request.class,
-                GetAllRequest.builder().userId(_authentication.CurrentUser().get().id()).build())
+                GetAllRequestByUserId.builder().userId(_authentication.CurrentUser().get().id()).build())
                 .map(venues ->
                         venues.stream()
                                 .map(_factory::CreateRequestListItemViewModel)

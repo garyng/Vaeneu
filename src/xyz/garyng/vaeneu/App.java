@@ -24,6 +24,7 @@ import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Module.*;
 import xyz.garyng.vaeneu.Request.RequestListViewModel;
 import xyz.garyng.vaeneu.Request.SelectVenueViewModel;
+import xyz.garyng.vaeneu.Review.ReviewViewModel;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;
 
@@ -83,8 +84,7 @@ public class App extends MvvmfxGuiceApplication
         {
         }, false);
 
-        _navigation.GoTo(RequestListViewModel.class);
-        _navigation.GoTo(SelectVenueViewModel.class);
+        _navigation.GoTo(ReviewViewModel.class);
 
         primaryStage.show();
     }

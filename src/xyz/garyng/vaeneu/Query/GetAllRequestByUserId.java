@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class GetAllRequest implements IQuery
+public class GetAllRequestByUserId implements IQuery
 {
     private int userId;
 }
+

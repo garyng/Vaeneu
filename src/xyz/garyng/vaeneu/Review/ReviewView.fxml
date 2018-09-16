@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tooltip?>
+<?import com.jfoenix.controls.JFXNodesList?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="xyz.garyng.vaeneu.Review.ReviewView"
+           prefHeight="400.0" prefWidth="600.0">
+	<BorderPane>
+		<top>
+			<JFXToolbar>
+				<left>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnGoBack"
+					            onMouseClicked="#onGoBackButtonClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="ARROW_LEFT"
+							                     styleClass="icon-white"/>
+						</StackPane>
+					</JFXRippler>
+				</left>
+				<center>
+					<Label>Review</Label>
+				</center>
+				<right>
+					<JFXRippler maskType="CIRCLE"
+					            fx:id="btnUser"
+					            onMouseClicked="#onUserPopupClicked">
+						<StackPane styleClass="padding-16">
+							<FontAwesomeIconView glyphName="USER_CIRCLE"
+							                     styleClass="icon-white"/>
+						</StackPane>
+
+					</JFXRippler>
+				</right>
+			</JFXToolbar>
+		</top>
+		<center>
+			<JFXListView
+					fx:id="lvRequests">
+				<placeholder>
+					<VBox alignment="CENTER">
+						<StackPane styleClass="padding-8, opacity-70">
+							<FontAwesomeIconView glyphName="SPACE_SHUTTLE"
+							                     glyphSize="64"/>
+						</StackPane>
+						<Label styleClass="display1"
+						       text="No pending requests..."/>
+					</VBox>
+				</placeholder>
+			</JFXListView>
+		</center>
+	</BorderPane>
+
+	<JFXNodesList fx:id="nlAccept"
+	              stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT"
+	              spacing="16">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="main-button"
+		           onAction="#onAcceptButtonClicked">
+			<tooltip>
+				<Tooltip text="Accept selected request(s)"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="CHECK"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="32"/>
+		</StackPane.margin>
+	</JFXNodesList>
+	<JFXNodesList fx:id="nlReject"
+	              stylesheets="@../resource/css/jfoenix-components.css"
+	              StackPane.alignment="BOTTOM_RIGHT"
+	              spacing="16">
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           style="-fx-background-color: -pink-400"
+		           styleClass="main-button"
+		           onAction="#onRejectButtonClicked">
+			<tooltip>
+				<Tooltip text="Reject selected request(s)"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="CLOSE"
+				                     size="24"
+				                     styleClass="main-icon"/>
+			</graphic>
+		</JFXButton>
+		<StackPane.margin>
+			<Insets bottom="32"
+			        right="100"/>
+		</StackPane.margin>
+	</JFXNodesList>
+</StackPane>

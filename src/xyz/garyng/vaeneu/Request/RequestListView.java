@@ -14,7 +14,6 @@ import org.fxmisc.easybind.EasyBind;
 import xyz.garyng.vaeneu.Model.RequestStatus;
 import xyz.garyng.vaeneu.Popup.UserPopupView;
 import xyz.garyng.vaeneu.Popup.UserPopupViewModel;
-import xyz.garyng.vaeneu.Query.GetAllRequest;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +39,6 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
         lvRequests.setItems(_viewModel.requestsProperty());
 
         _viewModel.SelectedRequestProperty().bind(lvRequests.getSelectionModel().selectedItemProperty());
-
 
         nlDetails.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNotNull());
         nlAdd.visibleProperty().bind(lvRequests.getSelectionModel().selectedItemProperty().isNull());
