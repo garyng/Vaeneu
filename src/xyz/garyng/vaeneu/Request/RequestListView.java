@@ -80,7 +80,12 @@ public class RequestListView implements FxmlView<RequestListViewModel>, Initiali
 
     private void closeNodeList()
     {
-        // nlAdd.animateList(false);
+        nlAdd.animateList(false);
         nlDetails.animateList(false);
+    }
+
+    public void onCheckDetailsButtonClicked(ActionEvent actionEvent)
+    {
+        _viewModel.GoToRequestDetailsCommand().execute();
     }
 }

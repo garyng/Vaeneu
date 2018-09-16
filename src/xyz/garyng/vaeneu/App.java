@@ -22,8 +22,6 @@ import xyz.garyng.vaeneu.Dialog.IDialogService;
 import xyz.garyng.vaeneu.Error.ErrorView;
 import xyz.garyng.vaeneu.Login.LoginViewModel;
 import xyz.garyng.vaeneu.Module.*;
-import xyz.garyng.vaeneu.Request.RequestListViewModel;
-import xyz.garyng.vaeneu.Request.SelectVenueViewModel;
 import xyz.garyng.vaeneu.Review.ReviewViewModel;
 import xyz.garyng.vaeneu.Root.RootView;
 import xyz.garyng.vaeneu.Root.RootViewModel;

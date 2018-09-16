@@ -57,6 +57,9 @@ public class RequestListViewModel extends ViewModelBase
     private final Command addRequestCommand;
     @Getter
     private final Command onRefreshCommand;
+    @Getter
+    private final Command GoToRequestDetailsCommand;
+
 
     @Inject
     public RequestListViewModel(NavigationService navigation, AuthenticationService authentication,
@@ -74,6 +77,15 @@ public class RequestListViewModel extends ViewModelBase
             protected void action() throws Exception
             {
                 GetAllRequests();
+            }
+        });
+        GoToRequestDetailsCommand = new DelegateCommand(() -> new Action()
+        {
+            @Override
+            protected void action() throws Exception
+            {
+                _navigation.GoTo(RequestDetailsViewModel.class, vm ->
+                        vm.setRequest(getSelectedRequest().getRequest()));
             }
         });
         GetAllRequests();

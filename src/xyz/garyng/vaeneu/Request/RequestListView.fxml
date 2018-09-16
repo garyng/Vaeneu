@@ -141,6 +141,18 @@
 		</JFXButton>
 		<JFXButton contentDisplay="GRAPHIC_ONLY"
 		           styleClass="animated-option-button"
+		           onAction="#onCheckDetailsButtonClicked">
+			<tooltip>
+				<Tooltip text="Details"/>
+			</tooltip>
+			<graphic>
+				<FontAwesomeIconView glyphName="EYE"
+				                     size="24"
+				                     styleClass="sub-icon"/>
+			</graphic>
+		</JFXButton>
+		<JFXButton contentDisplay="GRAPHIC_ONLY"
+		           styleClass="animated-option-button"
 		           onAction="#onRefreshButtonClicked">
 			<tooltip>
 				<Tooltip text="Refresh"/>

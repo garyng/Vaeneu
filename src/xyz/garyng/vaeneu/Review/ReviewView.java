@@ -72,7 +72,6 @@ public class ReviewView implements FxmlView<ReviewViewModel>, Initializable
         _viewModel.RejectRequestsCommand().execute();
     }
 
-
     public void onDetailsButtonClicked(ActionEvent actionEvent)
     {
         _viewModel.GoToRequestDetailsCommand().execute();
