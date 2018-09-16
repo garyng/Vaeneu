@@ -73,16 +73,16 @@ public class App extends MvvmfxGuiceApplication
         // automate ui
         _navigation.GoTo(LoginViewModel.class, vm ->
         {
-            vm.setUsername("admin");
-            vm.setPassword("admin");
-            vm.loginCommand().execute();
+//            vm.setUsername("admin");
+//            vm.setPassword("admin");
+//            vm.loginCommand().execute();
         }, false);
 
-        _navigation.GoTo(DashboardViewModel.class, vm ->
-        {
-        }, false);
-
-        _navigation.GoTo(ReviewViewModel.class);
+//        _navigation.GoTo(DashboardViewModel.class, vm ->
+//        {
+//        }, false);
+//
+//        _navigation.GoTo(ReviewViewModel.class);
 
         primaryStage.show();
     }
