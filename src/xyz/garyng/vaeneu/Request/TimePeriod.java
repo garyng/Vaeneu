@@ -70,7 +70,7 @@ public class TimePeriod
             TimePeriod current = sortedPeriods.get(i);
             if (aggregate.IsEndingRightBefore(current))
             {
-                aggregate.Merge(current);
+                aggregate = aggregate.Merge(current);
             } else
             {
                 aggregated.add(aggregate);
@@ -109,9 +109,9 @@ public class TimePeriod
         return endTime.equals(timePeriod.startTime);
     }
 
-    public void Merge(TimePeriod timePeriod)
+    public TimePeriod Merge(TimePeriod timePeriod)
     {
-        endTime = timePeriod.endTime;
+        return new TimePeriod(startTime, timePeriod.endTime);
     }
 
     @Override
